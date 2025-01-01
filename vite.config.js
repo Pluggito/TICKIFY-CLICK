@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react()],
   // Remove the GitHub Pages base if deploying to Vercel
   // base: "/HATSOFFwears/",
+  base:'./',
   assetsInclude: ['**/*.PNG', '**/*.JPG', '**/*.jpg', '**/*.png'],
   optimizeDeps: {
     include: ['tailwindcss']
