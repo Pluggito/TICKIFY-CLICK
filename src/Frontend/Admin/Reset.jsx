@@ -1,7 +1,8 @@
 
 
 
-const App = () => {
+
+const Reset = () => {
   return (
     <div>
       
@@ -9,4 +10,4 @@ const App = () => {
   )
 }
 
-export default App
+export default Reset

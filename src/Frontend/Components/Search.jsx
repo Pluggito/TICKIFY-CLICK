@@ -1,7 +1,5 @@
 
-
-
-const App = () => {
+const Search = () => {
   return (
     <div>
       
@@ -9,4 +7,4 @@ const App = () => {
   )
 }
 
-export default App
+export default Search
