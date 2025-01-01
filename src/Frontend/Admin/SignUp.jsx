@@ -1,7 +1,7 @@
 
 
 
-const App = () => {
+const SignUp = () => {
   return (
     <div>
       
@@ -9,4 +9,4 @@ const App = () => {
   )
 }
 
-export default App
+export default SignUp

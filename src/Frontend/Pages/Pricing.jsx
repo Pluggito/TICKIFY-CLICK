@@ -1,7 +1,6 @@
 
 
-
-const App = () => {
+const Pricing = () => {
   return (
     <div>
       
@@ -9,4 +8,4 @@ const App = () => {
   )
 }
 
-export default App
+export default Pricing
