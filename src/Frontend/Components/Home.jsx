@@ -32,10 +32,10 @@ export default function Home() {
   return (
     <section
       id="hero"
-      className="w-full h-screen relative bg-[rgb(240,238,235)] bg-[radial-gradient(rgba(0,0,0,0.02)_1px,rgba(0,0,0,0)_1px)] bg-[size:4px_4px] flex flex-col md:flex-row"
+      className="w-full h-screen relative bg-[rgb(240,238,235)] bg-[radial-gradient(rgba(0,0,0,0.02)_1px,rgba(0,0,0,0)_1px)] bg-[size:4px_4px] flex flex-col md:flex-row perspective-[100px]"
     >
       {/* Left Content */}
-      <div className="w-full md:w-1/2 relative text-center md:text-left flex flex-col justify-center items-center md:items-start ml-7 p-8">
+      <div className=" sm:w-1/4 md:w-1/2 relative text-center md:text-left flex flex-col justify-center items-center md:items-start ml-7 p-8">
         <motion.h5
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
