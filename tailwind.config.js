@@ -16,6 +16,9 @@ export default {
       fontFamily: {
         'space': ['Space Grotesk', 'Poppins'], // Add your custom font
       },
+      perspective: {
+        '1000': '1000px',
+      }
     },
   },
   plugins: [],
