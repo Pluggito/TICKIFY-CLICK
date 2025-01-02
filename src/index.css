@@ -6,13 +6,13 @@
 /* Your other custom CSS below */
 
 
-/* styles.css */
-.custom-bg {
-  background-image: url('../Frontend/assets/aditya-chinchure-ZhQCZjr9fHo-unsplash.jpg');
-  background-size: cover; /* Ensures the image covers the element */
-  background-position: center; /* Centers the image */
+body{
+  background-color: rgb(240, 238, 235); /* Background color */
+  background-image: radial-gradient(rgba(0, 0, 0, 0.02) 1px, rgba(0, 0, 0, 0) 1px); /* Radial gradient */
+  background-size: 4px 4px; 
 }
 
 ::-webkit-scrollbar{
   width: 0.5px;
 }
+
