@@ -1,9 +1,14 @@
+import Section from "./Section"
 
 
 const DiscoverEvents = () => {
   return (
-    <div>
-      
+    <div className="mt-10">
+      <Section section={'DISCOVER EVENTS'} />
+
+      <div>
+        <></>
+      </div>
     </div>
   )
 }

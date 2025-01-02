@@ -16,6 +16,7 @@ import Advert from "./Frontend/Pages/Advert"
 
 
 
+
 const App = () => {
   return (
     <div>
@@ -23,8 +24,8 @@ const App = () => {
     <Routes>
       <Route path="/" element={
         <>
-      <Home/>  
-     {/* <Preference /> */}
+      <Home/> 
+      <Preference />
       <DiscoverEvents />
       <Features />      
         </>
