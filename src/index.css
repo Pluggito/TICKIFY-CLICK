@@ -11,10 +11,12 @@
 }
 
 body{
-  background-color: rgb(240, 238, 235); /* Background color */
-  background-image: radial-gradient(rgba(0, 0, 0, 0.02) 1px, rgba(0, 0, 0, 0) 1px); /* Radial gradient */
+  background-color: rgb(240, 238, 235); /* Light background color */
+  background-image: radial-gradient(rgba(0, 0, 0, 0.02) 1px, rgba(0, 0, 0, 0) 1px); /* Light radial gradient */
   background-size: 4px 4px; 
 }
+
+
 
 ::-webkit-scrollbar{
   width: 0.5px;

@@ -1,4 +1,4 @@
-import { Route,Routes } from "react-router-dom"
+import { Route, Routes } from 'react-router-dom';
 import Navbar from "./Frontend/Components/Navbar"
 import Preference from "./Frontend/Components/Preference"
 import DiscoverEvents from "./Frontend/Components/DiscoverEvents"
@@ -14,36 +14,35 @@ import Reset from "./Frontend/Admin/Reset"
 import Advert from "./Frontend/Pages/Advert"
 
 
-
-
-
 const App = () => {
   return (
     <div>
-       <Navbar />
-    <Routes>
-      <Route path="/" element={
-        <>
-      <Home/> 
-      <Preference />
-      <DiscoverEvents />
-      <Features />      
-        </>
-      }/>
+        <Navbar />
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Home/> 
+            <Preference />
+            <DiscoverEvents />
+            <Features />      
+          </>
+        }/>
 
-      <Route path="/eventscategory" element={<EventsCategory />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/pricing" element={<Pricing />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<SignUp />} />
-      <Route path="/reset" element={<Reset/>} />
-      <Route path="/advert" element={<Advert/>}/>
-    </Routes>
+        <Route path="/eventscategory" element={<EventsCategory />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/reset" element={<Reset/>} />
+        <Route path="/advert" element={<Advert/>}/>
+      </Routes>
 
-    <Footer/>
+      <Footer/>
+
 
     </div>
-   
+      
+
   )
 }
 
