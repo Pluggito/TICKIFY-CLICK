@@ -3,6 +3,8 @@ import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { assets } from "../assets/asset";
+
 
 const Footer = () => {
   const [active, setActive] = useState(false);
@@ -13,7 +15,7 @@ const Footer = () => {
       <motion.li
         variants={itemVariants}
         onClick={() => setActive(false)}
-        className="flex items-center gap-2 w-full p-2 text-xs font-medium whitespace-nowrap rounded-md hover:bg-indigo-100 text-slate-700 hover:text-indigo-500 transition-colors cursor-pointer"
+        className="flex items-center gap-2 w-full p-2 text-xs font-medium whitespace-nowrap rounded-md hover:bg-[#b30d0d] text-slate-700 hover:text-white transition-colors cursor-pointer"
       >
         <span>{text}</span>
       </motion.li>
@@ -22,12 +24,12 @@ const Footer = () => {
 
   const DropdownMenu = ({ isActive, setIsActive, title, items }) => {
     return (
-      <div className="relative">
+      <div className="relative ">
         <b
           onClick={() => setIsActive((prev) => !prev)}
-          className="flex items-center gap-2 px-3 py-2 rounded-md text-black hover:text-[#b30d0d] transition-colors"
+          className="flex flex-row items-center gap-4 mb-10 rounded-md text-black hover:text-[#b30d0d] transition-colors font-space"
         >
-          <span className="font-medium text-sm">{title}</span>
+          <span className="font-semibold text-sm">{title}</span>
           <motion.span variants={iconVariants}>
             <FontAwesomeIcon icon={faCaretDown} />
           </motion.span>
@@ -37,7 +39,7 @@ const Footer = () => {
           initial={wrapperVariants.closed}
           animate={isActive ? "open" : "closed"}
           variants={wrapperVariants}
-          className="flex flex-col gap-2 p-2 mt-2 bg-white rounded-lg shadow-xl absolute top-full left-0 w-48"
+          className="flex flex-col gap-2 px-1 -mt-[25px] mb-10 bg-white rounded-lg shadow-xl absolute top-full left-0 w-30 py-2"
         >
           {items.map((item, index) => (
             <Option key={index} text={item} setActive={setIsActive} />
@@ -61,15 +63,21 @@ const Footer = () => {
 
   return (
     <footer className="py-10">
-      <div className="flex flex-col md:flex-row justify-center items-center max-w-7xl mx-auto px-4 bg-gray-100 py-20 mb-10">
+      <div className="flex flex-col md:flex-row sm:flex-row items-center gap-[50px] justify-center pb-9 max-w-[1000px] mx-auto px-auto content-center mb-10 bg-gray-100 ">
         {/* Logo Section */}
-        <div className="mb-8 md:mb-0 w-1/2">
-          <p className="text-gray-700 font-bold text-lg">TICKIFY</p>
-          <p className="leading-relaxed w-1/2">Tickify is a global self-service ticketing platform for live experiences that allows anyone to create, share, find, and attend events that fuel their passions and enrich their lives.</p>
+        <div className="mt-8 w-[400px] flex-col sm:mb-4">
+        <div className="flex flex-row gap-1 items-center w-1/2 ">
+        <img src={assets.logo_img} className="mb-2 w-32 inline-block" alt="logo_img" />
+        <p className="font-[Poppins] font-semibold -ml-8">TICKIFY</p>
+
+        </div>
+        
+
+          <p className="leading-relaxed w-[350px] -mt-[35px] font-space font-semibold text-gray-600">Tickify is a global self-service ticketing platform for live experiences that allows anyone to create, share, find, and attend events that fuel their passions and enrich their lives.</p>
         </div>
 
         {/* Dropdowns Section */}
-        <div className="flex space-x-4 mb-8 md:mb-0">
+        <div className="flex sm:flex-row gap-7 -mt-[10px] md:mb-0 flex-cente">
           <DropdownMenu
             isActive={active1}
             setIsActive={setActive1}
@@ -85,24 +93,20 @@ const Footer = () => {
         </div>
 
         {/* Social Media Section */}
-        <div className="text-center md:text-right">
-          <p className="text-gray-700 font-semibold mb-2">GET IN TOUCH</p>
-          <div className="flex space-x-4 justify-center md:justify-end flex-col ">
-            <a href="https://www.instagram.com/tickify.click" className="text-gray-700 hover:text-gray-900 transition-transform">
+        <div className="text-center md:text-right flex-center mb-4">
+          <p className="text-black font-semibold mb-2">GET IN TOUCH</p>
+          <div className="flex space-x-4 justify-center md:justify-end flex-col">
+            <a href="https://www.instagram.com/tickify.click" className="text-gray-600 hover:text-black transition-transform">
               <FontAwesomeIcon icon={faInstagram} size="lg" />
-              <span className="ml-1">tickify.click</span>
+              <span className="ml-2">tickify.click</span>
             </a>
-            <a href="/" className="text-gray-700 hover:text-gray-900 transition-transform">
+            <a href="/" className="text-gray-600 hover:text-black transition-transform">
               <FontAwesomeIcon icon={faXTwitter} size="lg" />
             </a>
-            <a href="/" className="text-gray-700 hover:text-gray-900 transition-transform">
+            <a href="/" className="text-gray-600 hover:text-black transition-transform">
               <FontAwesomeIcon icon={faLinkedin} size="lg" />
             </a>
           </div>
-        </div>
-
-        <div className="ml-10">
-          Hello
         </div>
       </div>
 

@@ -42,8 +42,7 @@ const Navbar = () => {
   }, [location]);
 
   return (
-    <nav className="flex items-center justify-between py-5 font-medium bg-[rgb(240,238,235)]
-            bg-[radial-gradient(rgba(0,0,0,0.02)_1px,rgba(0,0,0,0)_1px)] bg-[size:4px_4px]">
+    <nav className="flex items-center justify-between py-5 font-medium ">
       <div className="ml-7">
         <NavLink to="/" className="text-xl font-bold">TICKIFY</NavLink>
       </div>
