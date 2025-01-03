@@ -4,7 +4,11 @@
 
 
 /* Your other custom CSS below */
-
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body{
   background-color: rgb(240, 238, 235); /* Background color */
