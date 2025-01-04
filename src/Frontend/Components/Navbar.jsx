@@ -44,10 +44,12 @@ const Navbar = () => {
 
   return (
     <nav className="flex items-center justify-between py-5 font-medium relative">
-      <div className="ml-3">
+      <div>
         <NavLink to="/" className="text-2xl font-bold flex flex-row items-center">
           <img src={assets.logo_img} className="w-70 h-16 m-auto inline-block" alt="Tickify Logo" />
+          <p className="-ml-[15px]">
           TICKIFY
+          </p>         
         </NavLink>
       </div>
 
