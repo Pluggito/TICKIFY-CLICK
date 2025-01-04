@@ -12,12 +12,20 @@ import Login from "./Frontend/Admin/Login"
 import SignUp from "./Frontend/Admin/SignUp"
 import Reset from "./Frontend/Admin/Reset"
 import Advert from "./Frontend/Pages/Advert"
+import { SideMenu } from './Frontend/Components/SideMenu';
+import { useState } from 'react';
+
 
 
 const App = () => {
+
+  const [menu, setMenu] = useState(false);
+
+
   return (
-    <div>
+    <div className=''>
         <Navbar />
+        <SideMenu setMenu={setMenu} menu={menu} />
       <Routes>
         <Route path="/" element={
           <>
