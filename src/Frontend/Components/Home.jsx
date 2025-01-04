@@ -33,7 +33,7 @@ export default function Home() {
 
   return (
     <section
-      className="w-full h-screen relative  flex flex-col md:flex-row perspective-[100px] gap-9"
+      className="w-full h-screen   flex flex-col md:flex-row perspective-[100px] gap-9"
     >
       {/* Left Content */}
       <div className=" sm:w-1/4 md:w-1/2 relative text-center md:text-left flex flex-col justify-center items-center md:items-start ml-7 p-8 ">

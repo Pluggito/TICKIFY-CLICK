@@ -65,7 +65,7 @@ const Footer = () => {
     <footer className="py-10">
       <div className="flex flex-col md:flex-row sm:flex-row items-center gap-[50px] justify-center pb-9 max-w-[1000px] mx-auto px-auto content-center mb-10 bg-gray-100 ">
         {/* Logo Section */}
-        <div className="mt-8 w-[400px] flex-col sm:mb-4">
+        <div className="mt-8 w-[400px] flex-col sm:mb-4 items-center px-[35px]">
         <div className="flex flex-row gap-1 items-center w-1/2 ">
         <img src={assets.logo_img} className="mb-2 w-32 inline-block" alt="logo_img" />
         <p className="font-[Poppins] font-semibold -ml-8">TICKIFY</p>

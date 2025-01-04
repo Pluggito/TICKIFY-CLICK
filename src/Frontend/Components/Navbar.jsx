@@ -1,7 +1,9 @@
-import { faBars, faCircle, faAngleLeft } from "@fortawesome/free-solid-svg-icons"
+import { faCircle,} from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState, useRef, useEffect } from "react"
 import { NavLink, useLocation } from "react-router-dom"
+import { assets } from "../assets/asset";
+//import { SideMenu } from "./SideMenu";
 
 const NAV_ITEMS = [
   { path: '/', label: 'HOME' },
@@ -13,7 +15,6 @@ const NAV_ITEMS = [
 const Navbar = () => {
   const [activeNav, setActiveNav] = useState(0);
   const indicatorRef = useRef(null);
-  const [menu, setMenu] = useState(false);
   const location = useLocation();
 
   const handleNavClick = (index) => {
@@ -42,23 +43,25 @@ const Navbar = () => {
   }, [location]);
 
   return (
-    <nav className="flex items-center justify-between py-5 font-medium ">
+    <nav className="flex cursor-pointer items-center justify-between py-5 font-medium relative ">
       <div className="ml-7">
-        <NavLink to="/" className="text-xl font-bold">TICKIFY</NavLink>
+        <NavLink to="/" className="text-2xl font-bold flex flex-row items-center">
+        <img src={assets.logo_img} className="w-70 h-16 -mr-4 inline-block" alt="" />
+        TICKIFY</NavLink>
       </div>
 
-      <ul className="flex-row justify-between gap-6 mr-7 bg-transparent sm:flex hidden">
-        <div className="relative flex flex-row gap-6 items-center justify-around w-1/2 py-1 rounded-lg">
+      <ul className="flex-row justify-center gap-4 mr-4 bg-transparent sm:flex hidden relative">
+        <div className="flex flex-row gap-6 items-center justify-around  py-1 rounded-lg">
           {NAV_ITEMS.map((item, index) => (
             <NavLink
               key={item.path}
               to={item.path}
-              className={`nav-item text-gray-900 cursor-pointer transition-all duration-300 ${
-                activeNav === index ? "font-bold" : "hover:text-gray-600"
+              className={`nav-item text-gray-700 cursor-pointer transition-all duration-300 ${
+                activeNav === index ? "font-bold" : "hover:text-black"
               }`}
               onClick={() => handleNavClick(index)}
             >
-              {item.label}
+              <li> {item.label} </li>
             </NavLink>
           ))}
 
@@ -68,36 +71,16 @@ const Navbar = () => {
             className="absolute text-black transition-all duration-300 ease-in-out text-[9px]  -bottom-1"
           />
         </div>
-
+        
+       
         <button className="rounded-2xl border-2 border-dashed border-black bg-white px-6 py-3 font-semibold uppercase text-black transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none font-space">
+        <NavLink to='/login'>
           Login
+          </NavLink>
         </button>
       </ul>
 
-      <FontAwesomeIcon 
-        icon={faBars} 
-        className="text-[20px] w-5 cursor-pointer sm:hidden mr-7" 
-        onClick={() => setMenu(true)}
-      />
-
-      <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${menu ? 'w-full h-full' : 'w-0'}`}>
-        <div className='flex flex-col text-gray-600'>
-          <div onClick={() => setMenu(false)} className='flex items-center gap-4 p-3 cursor-pointer'>
-            <FontAwesomeIcon icon={faAngleLeft} className='text-[20px] mt-[4px] mr-[-5px]' />
-            <p>Back</p>
-          </div>
-          {NAV_ITEMS.map(item => (
-            <NavLink 
-              key={item.path}
-              onClick={() => setMenu(false)} 
-              to={item.path} 
-              className='py-2 pl-6 border hover:bg-gray-50'
-            >
-              {item.label}
-            </NavLink>
-          ))}
-        </div>
-      </div>
+    
     </nav>
   );
 };
