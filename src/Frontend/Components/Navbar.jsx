@@ -1,4 +1,4 @@
-import { faCircle,} from "@fortawesome/free-solid-svg-icons"
+import { faCircle } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState, useRef, useEffect } from "react"
 import { NavLink, useLocation } from "react-router-dom"
@@ -43,15 +43,16 @@ const Navbar = () => {
   }, [location]);
 
   return (
-    <nav className="flex cursor-pointer items-center justify-between py-5 font-medium relative ">
+    <nav className="flex items-center justify-between py-5 font-medium relative">
       <div className="ml-3">
         <NavLink to="/" className="text-2xl font-bold flex flex-row items-center">
-        <img src={assets.logo_img} className="w-70 h-16 -mr-4 inline-block" alt="" />
-        TICKIFY</NavLink>
+          <img src={assets.logo_img} className="w-70 h-16 m-auto inline-block" alt="Tickify Logo" />
+          TICKIFY
+        </NavLink>
       </div>
 
       <ul className="flex-row justify-center gap-4 mr-4 bg-transparent sm:flex hidden relative">
-        <div className="flex flex-row gap-6 items-center justify-around  py-1 rounded-lg">
+        <div className="flex flex-row gap-6 items-center justify-around py-1 rounded-lg">
           {NAV_ITEMS.map((item, index) => (
             <NavLink
               key={item.path}
@@ -61,26 +62,23 @@ const Navbar = () => {
               }`}
               onClick={() => handleNavClick(index)}
             >
-              <li> {item.label} </li>
+              <li>{item.label}</li>
             </NavLink>
           ))}
 
           <FontAwesomeIcon 
             icon={faCircle} 
             ref={indicatorRef} 
-            className="absolute text-black transition-all duration-300 ease-in-out text-[9px]  -bottom-1"
+            className="absolute text-black transition-all duration-300 ease-in-out text-[9px] -bottom-1"
           />
         </div>
         
-       
         <button className="rounded-2xl border-2 border-dashed border-black bg-white px-6 py-3 font-semibold uppercase text-black transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none font-space">
-        <NavLink to='/login'>
-          Login
+          <NavLink to='/login'>
+            Login
           </NavLink>
         </button>
       </ul>
-
-    
     </nav>
   );
 };
