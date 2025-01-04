@@ -4,8 +4,6 @@ import { assets } from '../assets/asset';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleRight } from '@fortawesome/free-regular-svg-icons';
 
-
-
 export default function Home() {
   const [color, setColor] = useState('black');
 
@@ -32,11 +30,9 @@ export default function Home() {
   const titleTextArray = "Tickify".split('');
 
   return (
-    <section
-      className="w-full h-screen   flex flex-col md:flex-row perspective-[100px] gap-9"
-    >
+    <section className="w-full h-screen relative flex flex-col md:flex-row perspective-[100px] gap-9 ">
       {/* Left Content */}
-      <div className=" sm:w-1/4 md:w-1/2 relative text-center md:text-left flex flex-col justify-center items-center md:items-start ml-7 p-8 ">
+      <div className="sm:w-1/4 md:w-1/2 relative text-center md:text-left flex flex-col justify-center items-center md:items-start ml-7 p-8">
         <motion.h5
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -71,7 +67,7 @@ export default function Home() {
       </div>
 
       {/* Right Image */}
-      <div className="w-full md:w-1/2 h-1/2 md:h-screen flex items-center justify-center perspective-[100px]">
+      <div className=" w-full md:w-1/2 h-1/2 md:h-screen flex items-center justify-center perspective-[100px]">
         <motion.img
           initial={{ rotateY: -15 }}
           animate={{ rotateY: -15 }}

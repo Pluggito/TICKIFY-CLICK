@@ -19,13 +19,13 @@ import { useState } from 'react';
 
 const App = () => {
 
-  const [menu, setMenu] = useState(false);
+ const [menu, setMenu] = useState(false);
 
 
   return (
-    <div className=''>
+    <div>
         <Navbar />
-        <SideMenu setMenu={setMenu} menu={menu} />
+       <SideMenu setMenu={setMenu} menu={menu} />
       <Routes>
         <Route path="/" element={
           <>
