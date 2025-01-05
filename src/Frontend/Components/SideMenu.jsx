@@ -10,22 +10,8 @@ export const SideMenu = ({ menu, setMenu }) => {
   };
 
   return (
-    <div className="place-content-center bg-inherit sm:hidden right-3 top-7 absolute">
+    <div className="place-content-center bg-inherit sm:hidden right-0 top-7 absolute">
       <AnimatedHamburgerButton active={active} handleRequest={handleRequest} />
-
-      <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-black transition-all ${menu ? 'w-full h-full' : 'w-0'}`}>
-        <div onClick={() => setMenu(false)} className='flex items-center gap-4 p-3 cursor-pointer'>
-          <div className='flex flex-col text-white'>
-            <p>Back</p>
-          </div>
-        </div>
-        <div className="flex flex-col text-white p-4">
-          <a href="/" className="py-2 hover:bg-gray-700">Home</a>
-          <a href="/about" className="py-2 hover:bg-gray-700">About</a>
-          <a href="/pricing" className="py-2 hover:bg-gray-700">Pricing</a>
-          <a href="/contact" className="py-2 hover:bg-gray-700">Contact</a>
-        </div>
-      </div>
     </div>
   );
 };
