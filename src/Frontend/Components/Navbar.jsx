@@ -54,7 +54,8 @@ const Navbar = () => {
       </div>
 
       <ul className="flex-row justify-center gap-4 mr-4 bg-transparent sm:flex hidden relative">
-        <div className="flex flex-row gap-6 items-center justify-around py-1 rounded-lg">
+        <li className="flex flex-row gap-6 items-center justify-around py-1 rounded-lg">
+          
           {NAV_ITEMS.map((item, index) => (
             <NavLink
               key={item.path}
@@ -64,7 +65,7 @@ const Navbar = () => {
               }`}
               onClick={() => handleNavClick(index)}
             >
-              <li>{item.label}</li>
+              {item.label}
             </NavLink>
           ))}
 
@@ -73,9 +74,9 @@ const Navbar = () => {
             ref={indicatorRef} 
             className="absolute text-black transition-all duration-300 ease-in-out text-[9px] -bottom-1"
           />
-        </div>
+        </li>
         
-        <button className="rounded-2xl border-2 border-dashed border-black bg-white px-6 py-3 font-semibold uppercase text-black transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none font-space">
+        <button className="rounded-2xl border-2 border-dashed border-black bg-white px-6 py-3 font-semibold uppercase tracking-wide text-black transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none font-space">
           <NavLink to='/login'>
             Login
           </NavLink>
