@@ -30,10 +30,13 @@ export const SideMenu = ({ menu, setMenu }) => {
 
       {/* Curtain Menu */}
       <div
-        className={`fixed top-0 left-0 w-full h-full bg-[#f0eeeb] bg-[radial-gradient(rgba(0,0,0,0.02)_1px,rgba(0,0,0,0)_1px)] bg-[length:4px_4px] transition-all duration-500 ease-in-out ${
-          menu ? "h-full opacity-100" : "h-0 opacity-0 overflow-hidden"
-        }`}
-      >
+  className={`fixed top-0 left-0 w-full transition-all duration-500 ease-in-out ${
+    menu
+      ? "h-full opacity-100 pointer-events-auto z-50 bg-[#f0eeeb] bg-[radial-gradient(rgba(0,0,0,0.02)_1px,rgba(0,0,0,0)_1px)] bg-[length:4px_4px]"
+      : "h-0 opacity-0 pointer-events-none z-0"
+  }`}
+>
+
         <div className="flex flex-col items-center justify-center h-full text-center font-space font-semibold ">
           <NavLink
             onClick={() => setMenu(false)} // Close the menu when clicked
@@ -85,11 +88,12 @@ const AnimatedHamburgerButton = ({ active, handleRequest }) => {
       }}
     >
       <motion.button
-        initial={false}
-        animate={active ? "open" : "closed"}
-        onClick={handleRequest}
-        className="relative h-12 w-12 rounded-full bg-transparent transition-colors hover:bg-gray-200 z-50"
-      >
+  initial={false}
+  animate={active ? "open" : "closed"}
+  onClick={handleRequest}
+  className="relative h-12 w-12 rounded-full bg-transparent transition-colors hover:bg-gray-200 z-[100]"
+>
+
         <motion.span
           variants={VARIANTS.top}
           className="absolute h-1 w-8 bg-black"

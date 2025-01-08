@@ -6,6 +6,8 @@ import Section from "../Components/Section";
 import { useState } from "react";
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 
+{/*------user Login------ */}
+
 const SignUp = () => {
   const [userForm, setUserForm] = useState({
     name: "",
