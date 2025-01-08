@@ -13,7 +13,8 @@ const Login = ({menu}) => {
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false); 
 
-
+ {/*-----Add Login Auth------- */}
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
     if(!email && !password){
@@ -30,8 +31,6 @@ const Login = ({menu}) => {
       setPassword(''),
       setError('') // Clear the error if validation passes
     }  
-
-
   };
   
 
