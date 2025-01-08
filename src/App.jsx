@@ -14,6 +14,7 @@ import Reset from "./Frontend/Admin/Reset"
 import Advert from "./Frontend/Pages/Advert"
 import { SideMenu } from './Frontend/Components/SideMenu';
 import { useState } from 'react';
+import Contact from './Frontend/Pages/Contact';
 
 
 
@@ -23,13 +24,13 @@ const App = () => {
 
 
   return (
-    <div>
+    <div className='relative'>
         <Navbar />
        <SideMenu setMenu={setMenu} menu={menu} />
       <Routes>
         <Route path="/" element={
           <>
-            <Home/> 
+           <Home menu={menu}/>
             <Preference />
             <DiscoverEvents />
             <Features />      
@@ -39,13 +40,14 @@ const App = () => {
         <Route path="/eventscategory" element={<EventsCategory />} />
         <Route path="/about" element={<About />} />
         <Route path="/pricing" element={<Pricing />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" menu={menu} element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/reset" element={<Reset/>} />
         <Route path="/advert" element={<Advert/>}/>
+        <Route path='/contact' element={<Contact/> }/>
       </Routes>
 
-      <Footer/>
+      <Footer menu={menu}/>
 
 
     </div>
