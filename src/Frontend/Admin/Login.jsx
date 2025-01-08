@@ -37,8 +37,8 @@ const Login = ({menu}) => {
   
 
   return (
-    <div className='flex items-center justify-center min-h-screen bg-inherit '>
-      <div className='max-w-4xl w-full p-10 shadow-xl bg-slate-100 rounded-xl bg-opacity-75 sm:-mt-[1rem]'>
+    <div className={`flex items-center justify-center min-h-screen bg-inherit ${ menu ? "hidden" : "block"}`}>
+      <div className='max-w-4xl w-full p-10 shadow-xl bg-slate-100 rounded-xl bg-opacity-75 '>
         {/*------Title and Subtitle-------- */}
         <div className='text-center mb-8'>
           <Section section={'LOGIN TO YOUR ACCOUNT'} />
@@ -76,13 +76,13 @@ const Login = ({menu}) => {
             <p className='text-red-700 font-semibold mb-4'>{error}</p>
           )}
             <button className={`w-full p-3 bg-black text-slate-200 font-semibold rounded opacity-65 hover:opacity-90"
-            onClick={handleSubmit}  ${menu ? 'hidden' : ''}`}
+            onClick={handleSubmit}  ${menu ? "hidden" : " "}`}
             onClick={handleSubmit} >
               Login to Your Account
             </button>
             <p className="mt-3 text-sm text-gray-600">
               Don’t have an account yet?{" "}
-              <NavLink href="/signup" className="text-[#b30d0d] hover:underline font-semibold text-md">
+              <NavLink to="/signup" className="text-[#b30d0d] hover:underline font-semibold text-md">
                 Register now!
               </NavLink>
             </p>
