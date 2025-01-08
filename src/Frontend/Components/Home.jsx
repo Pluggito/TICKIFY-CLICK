@@ -4,7 +4,7 @@ import { assets } from '../assets/asset';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleRight } from '@fortawesome/free-regular-svg-icons';
 
-export default function Home() {
+export default function Home({ menu }) {
   const [color, setColor] = useState('black');
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function Home() {
   const titleTextArray = "Tickify".split('');
 
   return (
-    <section className="w-full h-screen relative flex flex-col md:flex-row perspective-[100px] gap-9 ">
+    <section className={`w-full h-screen relative flex flex-col md:flex-row perspective-[100px] gap-9 transition-all duration-300 ${menu ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
       {/* Left Content */}
       <div className="sm:w-1/4 md:w-1/2 relative text-center md:text-left flex flex-col justify-center items-center md:items-start p-8">
         <motion.h5
@@ -67,14 +67,14 @@ export default function Home() {
       </div>
 
       {/* Right Image */}
-      <div className=" w-full md:w-1/2 h-1/2 md:h-screen flex items-center justify-center perspective-[100px]">
+      <div className="w-full md:w-1/2 h-1/2 md:h-screen flex items-center justify-center perspective-[100px]">
         <motion.img
           initial={{ rotateY: -15 }}
           animate={{ rotateY: -15 }}
-          whileHover={{ 
-            scale: 1.05, 
+          whileHover={{
+            scale: 1.05,
             rotateY: 0,
-            transition: { duration: 0.4 }
+            transition: { duration: 0.4 },
           }}
           className="w-3/4 md:w-full object-contain transform-gpu transition-all duration-300"
           src={assets.bg1}

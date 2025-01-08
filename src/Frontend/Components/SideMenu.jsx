@@ -1,17 +1,70 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MotionConfig, motion } from "framer-motion";
+import { NavLink } from "react-router-dom";
 
 export const SideMenu = ({ menu, setMenu }) => {
   const [active, setActive] = useState(false);
 
   const handleRequest = () => {
-    setActive((pv) => !pv);
+    setActive((prev) => !prev);
     setMenu((prev) => !prev);
   };
 
+  // Close the menu when the menu state changes
+  useEffect(() => {
+    if (menu) {
+      setActive(true); // Keep the hamburger button active when the menu is open
+    } else {
+      setActive(false); // Reset the hamburger button when the menu is closed
+    }
+  }, [menu]);
+
   return (
     <div className="place-content-center bg-inherit sm:hidden right-0 top-7 absolute">
-      <AnimatedHamburgerButton active={active} handleRequest={handleRequest} />
+      {/* Hamburger Button */}
+      <AnimatedHamburgerButton
+        active={active}
+        handleRequest={handleRequest}
+        className="z-50" // Ensures button stays above curtain menu
+      />
+
+      {/* Curtain Menu */}
+      <div
+        className={`fixed top-0 left-0 w-full h-full bg-[#f0eeeb] bg-[radial-gradient(rgba(0,0,0,0.02)_1px,rgba(0,0,0,0)_1px)] bg-[length:4px_4px] transition-all duration-500 ease-in-out ${
+          menu ? "h-full opacity-100" : "h-0 opacity-0 overflow-hidden"
+        }`}
+      >
+        <div className="flex flex-col items-center justify-center h-full text-center ">
+          <NavLink
+            onClick={() => setMenu(false)} // Close the menu when clicked
+            to="/"
+            className="text-2xl sm:text-4xl py-4 hover:text-gray-300 transition-colors"
+          >
+            HOME
+          </NavLink>
+          <NavLink
+            onClick={() => setMenu(false)} // Close the menu when clicked
+            to="/eventscategory"
+            className="text-2xl sm:text-4xl py-4 hover:text-gray-300 transition-colors"
+          >
+            DISCOVER
+          </NavLink>
+          <NavLink
+            onClick={() => setMenu(false)} // Close the menu when clicked
+            to="/about"
+            className="text-2xl sm:text-4xl py-4 hover:text-gray-300 transition-colors"
+          >
+            ABOUT
+          </NavLink>
+          <NavLink
+            onClick={() => setMenu(false)} // Close the menu when clicked
+            to="/contact"
+            className="text-2xl sm:text-4xl py-4 hover:text-gray-300 transition-colors"
+          >
+            CONTACT
+          </NavLink>
+        </div>
+      </div>
     </div>
   );
 };
@@ -28,7 +81,7 @@ const AnimatedHamburgerButton = ({ active, handleRequest }) => {
         initial={false}
         animate={active ? "open" : "closed"}
         onClick={handleRequest}
-        className="relative h-12 w-12 rounded-full bg-white/0 transition-colors hover:bg-white"
+        className="relative h-12 w-12 rounded-full bg-transparent transition-colors hover:bg-gray-200 z-50"
       >
         <motion.span
           variants={VARIANTS.top}

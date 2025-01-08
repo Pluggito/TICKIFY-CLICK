@@ -6,7 +6,7 @@ import { useState } from "react";
 import { assets } from "../assets/asset";
 
 
-const Footer = () => {
+const Footer = ({menu}) => {
   const [active, setActive] = useState(false);
   const [active1, setActive1] = useState(false);
 
@@ -27,19 +27,19 @@ const Footer = () => {
       <div className="relative ">
         <b
           onClick={() => setIsActive((prev) => !prev)}
-          className="flex flex-row items-center gap-4 mb-10 rounded-md text-black hover:text-[#b30d0d] transition-colors font-space"
+          className={`flex flex-row items-center gap-4 mb-10 rounded-md text-black hover:text-[#b30d0d] transition-colors font-space ${menu ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
         >
           <span className="font-semibold text-sm">{title}</span>
           <motion.span variants={iconVariants}>
             <FontAwesomeIcon icon={faCaretDown} />
-          </motion.span>
+          </motion.span> 
         </b>
 
         <motion.ul
           initial={wrapperVariants.closed}
           animate={isActive ? "open" : "closed"}
           variants={wrapperVariants}
-          className="flex flex-col gap-2 px-1 -mt-[25px] mb-10 bg-white rounded-lg shadow-xl absolute top-full left-0 w-30 py-2"
+          className="flex flex-col gap-2 px-1 -mt-[25px] mb-10 bg-white rounded-lg shadow-xl absolute top-full left-0 w-30 py-2 z-0 overflow-hidden "
         >
           {items.map((item, index) => (
             <Option key={index} text={item} setActive={setIsActive} />
