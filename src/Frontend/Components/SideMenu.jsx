@@ -34,7 +34,7 @@ export const SideMenu = ({ menu, setMenu }) => {
           menu ? "h-full opacity-100" : "h-0 opacity-0 overflow-hidden"
         }`}
       >
-        <div className="flex flex-col items-center justify-center h-full text-center ">
+        <div className="flex flex-col items-center justify-center h-full text-center font-space font-semibold ">
           <NavLink
             onClick={() => setMenu(false)} // Close the menu when clicked
             to="/"
