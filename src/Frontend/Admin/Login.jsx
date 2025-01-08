@@ -3,6 +3,7 @@ import Section from '../Components/Section'
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faApple, faXTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import { assets } from '../assets/asset';
 
 const Login = ({menu}) => {
@@ -10,14 +11,12 @@ const Login = ({menu}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false); 
 
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
     if(!email && !password){
-      setEmail(email),
-      setPassword(password),
       setError('Please fill in the required fields')
 
       setTimeout(() => {
@@ -37,8 +36,11 @@ const Login = ({menu}) => {
   
 
   return (
-    <div className={`flex items-center justify-center min-h-screen bg-inherit ${ menu ? "hidden" : "block"}`}>
-      <div className='max-w-4xl w-full p-10 shadow-xl bg-slate-100 rounded-xl bg-opacity-75 '>
+    <div className={`relative z-40 flex items-center justify-center min-h-screen bg-inherit ${menu ? "hidden" : "block"} overflow-x-hidden`}>
+
+
+      <div className='max-w-4xl w-full p-10 shadow-xl bg-slate-100 rounded-xl bg-opacity-75'>
+
         {/*------Title and Subtitle-------- */}
         <div className='text-center mb-8'>
           <Section section={'LOGIN TO YOUR ACCOUNT'} />
@@ -47,7 +49,7 @@ const Login = ({menu}) => {
 
         <div className='flex flex-wrap md:flex-nowrap justify-between gap-8 py-2'>
           {/*------Login Form------ */}
-          <div className='w-full md:w-1/2 py-5'>
+          <form className='w-full md:w-1/2 py-5'>
             <div className="mb-4">
               <input
                 type="text"
@@ -60,23 +62,31 @@ const Login = ({menu}) => {
                 autoComplete="off"
               />
             </div>
-            <div className="mb-6">
-              <input
-                type="password"
-                placeholder="Enter Password"
-                className="w-full p-3 bg-transparent text-black rounded-lg hover:bg-slate-50 shadow-md focus:outline-none"
-                value={password}
-                onChange={(e)=>setPassword(e.target.value)}
-                id="password"
-                required
-                autoComplete="off"               
-              />
-            </div>
+            <div className="mb-6 relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter Password"
+              className="w-full p-3 bg-transparent text-black rounded-lg hover:bg-slate-50 shadow-md focus:outline-none"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              id="password"
+              required
+              autoComplete="off"
+            />
+            {/* Toggle Button */}
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute inset-y-0 right-4 flex items-center text-gray-500 hover:text-black"
+            >
+              {showPassword ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} />}
+            </button>
+          </div>
+
             {error && (
             <p className='text-red-700 font-semibold mb-4'>{error}</p>
           )}
-            <button className={`w-full p-3 bg-black text-slate-200 font-semibold rounded opacity-65 hover:opacity-90"
-            onClick={handleSubmit}  ${menu ? "hidden" : " "}`}
+            <button className={`w-full p-3 bg-black text-slate-200 font-semibold rounded opacity-65 hover:opacity-90 ${menu ? "hidden" : ""}`}
             onClick={handleSubmit} >
               Login to Your Account
             </button>
@@ -86,14 +96,17 @@ const Login = ({menu}) => {
                 Register now!
               </NavLink>
             </p>
-          </div>
+          </form>
 
           {/* Divider */}
-          <div className="flex items-center justify-center my-6">
-            <hr className="flex-grow border-gray-300" />
-            <span className="mx-4 text-primary text-xl">✦</span>
-            <hr className="flex-grow border-gray-300" />
+          <div className="flex items-center justify-center gap-4 my-6">
+          <hr className="flex-grow border-gray-300" />
+          <div className="w-10 h-10 bg-gray-100 text-gray-500 flex items-center justify-center rounded-full">
+            OR
           </div>
+          <hr className="flex-grow border-gray-300" />
+        </div>
+
 
 
            {/* Social Login */}

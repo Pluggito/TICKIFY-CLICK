@@ -67,7 +67,7 @@ export default function Home({ menu }) {
       </div>
 
       {/* Right Image */}
-      <div className="w-full md:w-1/2 h-1/2 md:h-screen flex items-center justify-center perspective-[100px]">
+      <div className="w-full md:w-1/2 h-1/2 md:h-screen flex items-center justify-center overflow-hidden">
         <motion.img
           initial={{ rotateY: -15 }}
           animate={{ rotateY: -15 }}
@@ -76,7 +76,7 @@ export default function Home({ menu }) {
             rotateY: 0,
             transition: { duration: 0.4 },
           }}
-          className="w-3/4 md:w-full object-contain transform-gpu transition-all duration-300"
+          className="w-3/4 max-w-full md:w-full object-contain transform-gpu transition-all duration-300"
           src={assets.bg1}
           alt="Background decoration"
         />
