@@ -63,6 +63,13 @@ export const SideMenu = ({ menu, setMenu }) => {
           >
             CONTACT
           </NavLink>
+          <NavLink
+            onClick={() => setMenu(false)} // Close the menu when clicked
+            to="/login"
+            className="text-2xl sm:text-4xl py-4 hover:text-gray-300 transition-colors"
+          >
+            LOGIN
+          </NavLink>
         </div>
       </div>
     </div>

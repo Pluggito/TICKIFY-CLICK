@@ -40,7 +40,7 @@ const App = () => {
         <Route path="/eventscategory" element={<EventsCategory />} />
         <Route path="/about" element={<About />} />
         <Route path="/pricing" element={<Pricing />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" menu={menu} element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/reset" element={<Reset/>} />
         <Route path="/advert" element={<Advert/>}/>
