@@ -150,7 +150,7 @@ const SignUp = () => {
         {/* Right Column */}
         <div className="md:w-1/2 relative hidden md:block">
           <img
-            src={assets.bg3}
+            src={assets.signup_image}
             alt="Creative Network"
             className="w-full h-full object-cover"
           />

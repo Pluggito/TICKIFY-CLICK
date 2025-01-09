@@ -35,7 +35,7 @@ const Home = ({ menu }) => {
   const titleTextArray = "Tickify".split('');
 
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden mb-4">
       <section
         aria-label="Welcome Section"
         className={`relative flex flex-col md:flex-row gap-9 transition-all duration-300 w-full max-w-screen-xl mx-auto px-8 ${
@@ -48,7 +48,7 @@ const Home = ({ menu }) => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="font-bold text-base font-space"
+            className="font-bold text-[30px] font-space text-gray-700 tracking-wide"
           >
             {welcomeTextArray.map((letter, index) => (
               <span key={index}>{letter}</span>
@@ -58,7 +58,7 @@ const Home = ({ menu }) => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="font-bold text-[60px] md:text-[100px] font-[Poppins]"
+            className="font-bold text-[70px] md:text-[100px] font-[Poppins] tracking-wide"
           >
             {titleTextArray.map((letter, index) => (
               <span key={index} className="text-transition" style={{ color: color }}>
@@ -66,6 +66,7 @@ const Home = ({ menu }) => {
               </span>
             ))}
           </motion.h2>
+          <p className='font-space text-lg font-semibold text-gray-700 tracking-wide'>Find and book tickets for the hottest concerts, sports games, and shows near you.</p>
           <NavLink to="/signup">
             <button
               onClick={() =>
@@ -82,7 +83,7 @@ const Home = ({ menu }) => {
         {/* Right Image */}
         <div className="w-full sm:w-1/2 flex items-center justify-center overflow-hidden">
           <img
-            className="w-full h-auto object-cover"
+            className="w-full h-auto object-cover rounded-xl shadow-lg opacity-85 clip-circle-center"
             src={assets.bg1}
             alt="Background image"
           />
