@@ -26,7 +26,7 @@ const Features = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 items-center justify-between text-center lg:grid-cols-3 mt-12 mb-12 w-full h-auto py-20 gap-4 tracking-wide ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 items-center justify-between text-center lg:grid-cols-3 mt-12 w-full h-auto py-20 gap-4 tracking-wide ">
         {feature.map((item,index)=>(
           <div key={index}
           className="w-3/4 ml-11 p-auto rounded-3xl cursor-pointer p-6 transition-all duration-500 hover:shadow-lg hover:scale-110">
