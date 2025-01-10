@@ -35,7 +35,7 @@ const Login = ({menu}) => {
   
 
   return (
-    <div className={`relative z-40 flex items-center justify-center min-h-screen bg-inherit ${menu ? "hidden" : "block"} overflow-x-hidden`}>
+    <div className={`relative z-40 flex items-center justify-center bg-inherit ${menu ? "hidden" : "block"} overflow-x-hidden max-w-7xl m-auto`}>
 
 
       <div className='max-w-4xl w-full p-10 shadow-xl bg-slate-100 rounded-xl bg-opacity-75'>

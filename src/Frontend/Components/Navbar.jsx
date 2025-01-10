@@ -42,7 +42,7 @@ const Navbar = () => {
   }, [location]);
 
   return (
-    <nav className="flex items-center justify-between py-5 font-medium relative overflow-hidden">
+    <nav className="flex items-center justify-between py-5 font-medium relative overflow-hidden m-auto">
       {/* Logo */}
       <div>
         <NavLink to="/" className="text-2xl font-bold flex items-center">

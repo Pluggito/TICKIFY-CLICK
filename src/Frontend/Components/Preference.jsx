@@ -7,7 +7,7 @@ const Preference = () => {
   return (
     <div>
       <Section section={'WHY TICKIFY'}/>
-    <div className="flex items-center text-center text-gray-700 justify-center px-5">
+    <div className="flex items-center text-center text-gray-700 justify-center px-5 max-w-7xl m-auto">
     <h1 className="text-xl font-space font-semibold ">{text}</h1>
 
     </div>
