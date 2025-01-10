@@ -20,7 +20,7 @@ const App = () => {
   const [menu, setMenu] = useState(false);
 
   return (
-    <div className="container overflow-x-hidden p-auto m-auto">
+    <div className="container overflow-x-hidden m-auto">
       {/* Navbar */}
       <Navbar />
 

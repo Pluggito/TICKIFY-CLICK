@@ -35,15 +35,15 @@ const Home = ({ menu }) => {
   const titleTextArray = "Tickify".split('');
 
   return (
-    <div className="overflow-x-hidden mb-4">
+    <div className="overflow-x-hidden mb-4 m-auto">
       <section
         aria-label="Welcome Section"
-        className={`relative flex flex-col md:flex-row gap-9 transition-all duration-300 w-full max-w-screen-xl mx-auto px-8 ${
+        className={`relative flex flex-col md:flex-row gap-9 transition-all duration-300  w-full mx-auto px-8 ${
           menu ? 'opacity-0 pointer-events-none' : 'opacity-100'
-        }`}
+        } hover:shadow-xl rounded-2xl`}
       >
         {/* Left Content */}
-        <div className="w-full sm:w-1/2 text-center md:text-left flex flex-col justify-center items-center md:items-start p-8">
+        <div className=" sm:w-1/2 text-center md:text-left flex flex-col justify-center items-center md:items-start p-8">
           <motion.h5
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}

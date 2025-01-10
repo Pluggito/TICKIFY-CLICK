@@ -35,7 +35,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-inherit">
+    <div className="w-full m-auto flex items-center justify-center bg-inherit">
       <div className="flex flex-col md:flex-row rounded-xl shadow-lg overflow-hidden max-w-7xl w-full tracking-wide">
         {/* Left Column */}
         <div className="md:w-1/2 p-8 bg-slate-100">
