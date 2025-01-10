@@ -74,7 +74,7 @@ const Home = ({ menu }) => {
               }
               className="mt-4 flex items-center gap-2 border-black border-y-4 rounded-full py-3 px-5 font-semibold font-space text-gray-900 hover:bg-black hover:text-white transition-all duration-300"
             >
-              <FontAwesomeIcon icon={faCircleRight} className="mr-2" />
+              <FontAwesomeIcon icon={faCircleRight} className="mr-2 tracking-widest" />
               GET STARTED
             </button>
           </NavLink>
