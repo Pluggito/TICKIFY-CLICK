@@ -15,6 +15,8 @@ import Advert from './Frontend/Pages/Advert';
 import { SideMenu } from './Frontend/Components/SideMenu';
 import { useState } from 'react';
 import Contact from './Frontend/Pages/Contact';
+import Dashboard from './Frontend/Admin/Dashboard';
+import CreateEvent from './Frontend/Pages/CreateEvent';
 
 const App = () => {
   const [menu, setMenu] = useState(false);
@@ -48,6 +50,8 @@ const App = () => {
         <Route path="/reset" element={<Reset />} />
         <Route path="/advert" element={<Advert />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='/createevents' element={<CreateEvent/>} />
       </Routes>
 
       {/* Footer */}
