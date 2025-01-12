@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { assets } from "../assets/asset";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXTwitter } from "@fortawesome/free-brands-svg-icons";
@@ -10,10 +10,13 @@ import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 
 const SignUp = () => {
   const [userForm, setUserForm] = useState({
-    name: "",
-    email: "",
+    firstName: "",
+    lastName: "",
+    email: "", 
     password: "",
   });
+
+ // let navigate = useNavigate()
 
   const [formError, setFormError] = useState("");
   const [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
@@ -23,8 +26,10 @@ const SignUp = () => {
   };
 
   const handleUserFormSubmit = () => {
-    if (!userForm.name || !userForm.email || !userForm.password) {
+    if (!userForm.firstName || !userForm.lastName || !userForm.email || !userForm.password) {
       setFormError("Please fill in the required fields");
+      {/*-----place navigate here or anywhere ---- */}
+      // navigate('/dashboard'); 
 
       setTimeout(() => {
         setFormError("");
@@ -36,8 +41,26 @@ const SignUp = () => {
 
   return (
     <div className="w-full m-auto flex items-center justify-center bg-inherit">
-      <div className="flex flex-col md:flex-row rounded-xl shadow-lg overflow-hidden max-w-7xl w-full tracking-wide">
+      <div className="flex flex-col md:flex-row rounded-2xl shadow-lg overflow-hidden max-w-7xl w-full tracking-wide">
         {/* Left Column */}
+        <div className="md:w-1/2 relative hidden md:block p-2 bg-slate-100">
+        <img
+          src={assets.signup_image}
+          alt="Creative Network"
+          className="w-full h-full object-cover rounded-xl"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-white/70 opacity-30"></div>
+        <div className="absolute bottom-8 left-8 text-slate-200">
+          <h2 className="text-xl font-bold">
+            Join the world&apos;s largest community of event enthusiasts.
+          </h2>
+          <p className="mt-2 text-sm text-slate-200">
+            Discover, book, and enjoy unforgettable experiences with ease.
+          </p>
+        </div>
+        </div>
+        
+        {/* Right Column */}
         <div className="md:w-1/2 p-8 bg-slate-100">
           <Section section={"CREATE ACCOUNT"} />
           <p className="text-gray-500 mb-6 self-center text-center font-space">
@@ -70,26 +93,43 @@ const SignUp = () => {
           {/* Form */}
           <form>
             {formError && (
-              <p className="text-red-700 text-md font-space font-bold py-3">
+              <p className="text-red-700 text-md font-space font-bold py-3 inline-block">
                 {formError}
               </p>
             )}
-
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700">
-                Name*
-              </label>
-              <input
-                name="name"
-                type="text"
-                placeholder="Enter your name"
-                className="w-full p-3 rounded-lg bg-transparent text-black hover:bg-slate-50 shadow-md focus:outline-none"
-                value={userForm.name}
-                onChange={handleUserForm}
-                autoComplete="off"
-                required
-              />
+            <div className="flex flex-row ">
+              <div className="mb-4 w-full">
+                <label className="block text-sm font-medium text-gray-700">
+                  First Name*
+                </label>
+                <input
+                  name="firstName"
+                  type="text"
+                  placeholder="Enter your first name"
+                  className="w-full p-3 rounded-lg bg-transparent text-black hover:bg-slate-50 shadow-md focus:outline-none"
+                  value={userForm.firstName}
+                  onChange={handleUserForm}
+                  autoComplete="off"
+                  required
+                />
+              </div>
+              <div className="mb-4 w-full">
+                <label className="block text-sm font-medium text-gray-700">
+                  Last Name*
+                </label>
+                <input
+                  name="lastName"
+                  type="text"
+                  placeholder="Enter your last name"
+                  className="w-full p-3 rounded-lg bg-transparent text-black hover:bg-slate-50 shadow-md focus:outline-none"
+                  value={userForm.lastName}
+                  onChange={handleUserForm}
+                  autoComplete="off"
+                  required
+                />
+              </div>
             </div>
+           
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700">
                 Email*
@@ -145,29 +185,14 @@ const SignUp = () => {
               Log in
             </NavLink>
           </p>
-        </div>
-
-        {/* Right Column */}
-        <div className="md:w-1/2 relative hidden md:block">
-          <img
-            src={assets.signup_image}
-            alt="Creative Network"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-white/70 opacity-30"></div>
-          <div className="absolute bottom-8 left-8 text-slate-200">
-            <h2 className="text-xl font-bold">
-              Join the world's largest network of designers and digital
-              creatives.
-            </h2>
-            <p className="mt-2 text-sm text-slate-200">
-              Share your design work, build your portfolio, and get hired.
-            </p>
-          </div>
-        </div>
+        </div>       
       </div>
     </div>
   );
 };
 
 export default SignUp;
+
+
+
+

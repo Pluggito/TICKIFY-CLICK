@@ -44,9 +44,9 @@ const Navbar = () => {
   return (
     <nav className="flex items-center justify-between py-5 font-medium relative overflow-hidden m-auto">
       {/* Logo */}
-      <div>
-        <NavLink to="/" className="text-2xl font-bold flex items-center">
-          <img src={assets.logo_img} className="w-70 h-16 inline-block" alt="Tickify Logo" />
+      <div  className="">
+        <NavLink to="/" className="text-2xl font-bold flex items-center justify-center flex-row">
+          <img src={assets.logo_img} className="w-20 inline-block" alt="Tickify Logo" />
           <p className="-ml-[15px]">TICKIFY</p>
         </NavLink>
       </div>

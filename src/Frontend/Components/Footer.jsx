@@ -63,7 +63,7 @@ const Footer = ({menu}) => {
 
   return (
     <footer className="py-10">
-      <div className="flex flex-col md:flex-row sm:flex-row items-center gap-[50px] justify-center pb-9 max-w-[1000px] mx-auto px-auto content-center mb-10 bg-inherit shadow-md">
+      <div className="flex flex-col md:flex-row sm:flex-col items-center gap-[50px] justify-center pb-9 max-w-7xl mx-auto px-auto content-center mb-10 bg-inherit shadow-md">
         {/* Logo Section */}
         <div className="mt-8 w-[400px] flex-col sm:mb-4 items-center px-[35px]">
         <div className="flex flex-row gap-1 items-center w-1/2 ">
@@ -77,7 +77,7 @@ const Footer = ({menu}) => {
         </div>
 
         {/* Dropdowns Section */}
-        <div className="flex sm:flex-row gap-7 -mt-[10px] md:mb-0 flex-cente">
+        <div className="flex sm:flex-row gap-7 -mt-[10px] md:mb-0 flex-center ">
           <DropdownMenu
             isActive={active1}
             setIsActive={setActive1}
@@ -93,12 +93,12 @@ const Footer = ({menu}) => {
         </div>
 
         {/* Social Media Section */}
-        <div className="text-center md:text-right flex-center mb-4">
+        <div className="text-center md:text-center justify-center mb-4 p-2 tracking-wider -ml-6">
           <p className="text-black font-semibold mb-2">GET IN TOUCH</p>
-          <div className="flex space-x-4 justify-center md:justify-end flex-col">
+          <div className="flex space-x-4 justify-between flex-col">
             <a href="https://www.instagram.com/tickify.click" className="text-gray-600 hover:text-black transition-transform">
               <FontAwesomeIcon icon={faInstagram} size="lg" />
-              <span className="ml-2">tickify.click</span>
+              <span className="ml-2 sm:text-sm">tickify.click</span>
             </a>
             <a href="/" className="text-gray-600 hover:text-black transition-transform">
               <FontAwesomeIcon icon={faXTwitter} size="lg" />
