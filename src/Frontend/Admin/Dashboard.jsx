@@ -9,16 +9,16 @@ import { useNavigate } from 'react-router';
 const Dashboard = () => {
   // const [openNav, setOpenNav] = useState(false);
 
-  const customers = [
-    { name: 'Jane Cooper', email: 'jane@microsoft.com', amount: '+$1,999.00', status: 'active' },
-    { name: 'Floyd Miles', email: 'floyd@yahoo.com', amount: '+$1,999.00', status: 'inactive' },
+//  const customers = [
+  //  { name: 'Jane Cooper', email: 'jane@microsoft.com', amount: '+$1,999.00', status: 'active' },
+  //  { name: 'Floyd Miles', email: 'floyd@yahoo.com', amount: '+$1,999.00', status: 'inactive' },
     // Add more customer objects here
-  ];
+  // ];
 
   let navigate = useNavigate();
 
   return (
-      <div className="flex flex-col lg:flex-row bg-gradient-to-r from-[#b30d0d] to-[#111] max-w-[1320px] p-5 m-auto rounded-2xl tracking-wide">
+      <div className="flex flex-col lg:flex-row bg-gradient-to-r from-[#b30d0d] to-[#111] max-w-[1320px] p-5 m-auto rounded-2xl tracking-wide outline-none overflow-hidden">
         {/* Sidebar */}
         <aside className={`w-64 min-h-[45vw] bg-slate-100 flex flex-col justify-between rounded-2xl p-4 lg:block`}>
           <div>
