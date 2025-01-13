@@ -1,9 +1,8 @@
-
 // import { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarCheck, faCalendarPlus, faChartBar,} from '@fortawesome/free-regular-svg-icons';
 import { assets } from '../assets/asset';
-import { useNavigate } from 'react-router';
+//import { useNavigate } from 'react-router';
 // import { path } from 'motion/react-client';
 
 const Dashboard = () => {
@@ -15,12 +14,12 @@ const Dashboard = () => {
     // Add more customer objects here
   // ];
 
-  let navigate = useNavigate();
+ // let navigate = useNavigate();
 
   return (
       <div className="flex flex-col lg:flex-row bg-gradient-to-r from-[#b30d0d] to-[#111] max-w-[1320px] p-5 m-auto rounded-2xl tracking-wide outline-none overflow-hidden">
         {/* Sidebar */}
-        <aside className={`w-64 min-h-[45vw] bg-slate-100 flex flex-col justify-between rounded-2xl p-4 lg:block`}>
+        <aside className={`w-full md:w-64 min-h-[45vw] bg-slate-100 flex flex-col justify-between rounded-2xl p-4`}>
           <div>
             <div className="flex items-center space-x-3 mb-7 p-2 transition-all ease-out duration-500 rounded-lg hover:shadow-xl cursor-pointer">
               <div className="bg-slate-100 w-10 h-10 rounded-full border border-red-800"></div>
@@ -31,7 +30,7 @@ const Dashboard = () => {
             </div>
             <nav className="space-y-4">
               {[
-                { label: 'Dashboard', icon: assets.home_icon, },
+                { label: 'Dashboard', icon: assets.home_icon },
                 { label: 'About', icon: assets.about_icon },
                 { label: 'Events', icon: faCalendarCheck },
                 { label: 'Sales', icon: faChartBar },
@@ -52,7 +51,7 @@ const Dashboard = () => {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 p-5 mb-7 shadow-lg rounded-md h-auto">
+        <main className="flex-1 p-4 md:p-5 mb-7 shadow-lg rounded-md h-auto">
           {/* Header */}
           <header className='text-white'>
             <h1 className="text-3xl font-bold mb-6">Hello User 👋</h1>
@@ -64,14 +63,13 @@ const Dashboard = () => {
               { title: 'Total Revenue', value: '₦451,500.68', change: '+16% this month', color: 'text-green-500' },
               { title: 'Ticket Sales', value: '1,893', change: '-1% this month', color: 'text-red-500' },
               { title: 'Upcoming Events', value: '3', change: '2 events this week', color: 'text-gray-500' },
-              { title: 'Attendants', value: '189', change: '',},
+              { title: 'Attendants', value: '189', change: '' },
             ].map((stat, index) => (
               <div key={index} className="bg-slate-100 p-6 rounded-lg shadow-md text-center">
                 <h3 className="text-sm text-left font-semibold">{stat.title}</h3>
                 <p className="text-2xl font-bold mt-2 flex flex-col">
                   {stat.value}
                   {stat.change && <span className={`text-sm ${stat.color}`}>{stat.change}</span>}
-                  {stat.indicator && <div className="rounded-full bg-green-500 w-3 h-3 inline-block ml-2"></div>}
                 </p>
               </div>
             ))}
