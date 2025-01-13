@@ -105,7 +105,7 @@ const SignUp = () => {
                 <input
                   name="firstName"
                   type="text"
-                  placeholder="Enter your first name"
+                  placeholder="Enter first name"
                   className="w-full p-3 rounded-lg bg-transparent text-black hover:bg-slate-50 shadow-md focus:outline-none"
                   value={userForm.firstName}
                   onChange={handleUserForm}
@@ -120,7 +120,7 @@ const SignUp = () => {
                 <input
                   name="lastName"
                   type="text"
-                  placeholder="Enter your last name"
+                  placeholder="Enter last Name"
                   className="w-full p-3 rounded-lg bg-transparent text-black hover:bg-slate-50 shadow-md focus:outline-none"
                   value={userForm.lastName}
                   onChange={handleUserForm}
