@@ -42,7 +42,7 @@ const App = () => {
             </>
           }
         />
-        <Route path="/eventscategory" element={<EventsCategory />} />
+        <Route path="/eventscategory/:ticketid" element={<EventsCategory />} />
         <Route path="/about" element={<About />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/login" element={<Login menu={menu} />} />
