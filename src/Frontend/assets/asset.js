@@ -1,6 +1,4 @@
 import bg1 from './Background_Image_2-Compressed.png'
-import bg2 from './New_Background_Image-removebg-preview.png'
-
 import logo_img from './Tickfy_Logo_01-6_page-0001-removebg-preview.svg'
 import google_icon from './google.svg'
 import signup_image from './New Background Image.jpg'
@@ -23,6 +21,7 @@ import event_12 from './pexels-sebastian-ervi-866902-1763075.jpg'
 import event_13 from './pexels-jean-daniel-2570139.jpg'
 import event_14 from './pexels-monica-713149.jpg'
 import event_15 from './pexels-sulimansallehi-2128165.jpg'
+import event_16 from './work 2.jpg'
 
 
 
@@ -30,7 +29,6 @@ import event_15 from './pexels-sulimansallehi-2128165.jpg'
 
 export const assets = {
     bg1,
-    bg2,
     logo_img,
     google_icon,
     signup_image,
@@ -51,6 +49,7 @@ export const assets = {
         subCategory: "Rock",
         ticketEntry: ["Regular", "VIP"],
         available: true,
+        date: "2025-12-01",
     },
     {
         _id: "002",
@@ -62,6 +61,7 @@ export const assets = {
         subCategory: "Festival",
         ticketEntry: ["Regular", "VIP"],
         available: true,
+        date: "2025-11-15",
     },
     {
         _id: "003",
@@ -73,6 +73,7 @@ export const assets = {
         subCategory: "Football",
         ticketEntry: ["Regular", "VIP"],
         available: false,
+        date: "2025-10-20",
     },
     {
         _id: "004",
@@ -84,6 +85,7 @@ export const assets = {
         subCategory: "Drama",
         ticketEntry: ["Regular", "VIP"],
         available: true,
+        date: "2025-09-30",
     },
     {
         _id: "005",
@@ -95,6 +97,7 @@ export const assets = {
         subCategory: "Theme Park",
         ticketEntry: ["Regular", "VIP"],
         available: true,
+        date: "2025-08-25",
     },
     {
         _id: "006",
@@ -106,6 +109,7 @@ export const assets = {
         subCategory: "Exhibition",
         ticketEntry: ["Regular", "VIP"],
         available: true,
+        date: "2025-07-15",
     },
     {
         _id: "007",
@@ -117,6 +121,7 @@ export const assets = {
         subCategory: "Escape Room",
         ticketEntry: ["Regular", "VIP"],
         available: true,
+        date: "2025-06-10",
     },
     {
         _id: "008",
@@ -128,6 +133,7 @@ export const assets = {
         subCategory: "Stand-Up",
         ticketEntry: ["Regular", "VIP"],
         available: true,
+        date: "2025-05-05",
     },
     {
         _id: "009",
@@ -139,6 +145,7 @@ export const assets = {
         subCategory: "Classical",
         ticketEntry: ["Regular", "VIP"],
         available: true,
+        date: "2025-04-20",
     },
     {
         _id: "010",
@@ -150,6 +157,7 @@ export const assets = {
         subCategory: "Horror",
         ticketEntry: ["Regular", "VIP"],
         available: true,
+        date: "2025-03-15",
     },
     {
         _id: "011",
@@ -161,6 +169,7 @@ export const assets = {
         subCategory: "Live Show",
         ticketEntry: ["Regular", "VIP"],
         available: true,
+        date: "2025-02-10",
     },
     {
         _id: "012",
@@ -172,6 +181,7 @@ export const assets = {
         subCategory: "Rides",
         ticketEntry: ["Regular", "VIP"],
         available: true,
+        date: "2025-01-05",
     },
     {
         _id: "013",
@@ -183,6 +193,7 @@ export const assets = {
         subCategory: "Festival",
         ticketEntry: ["Regular", "VIP"],
         available: true,
+        date: "2025-12-12",
     },
     {
         _id: "014",
@@ -194,6 +205,7 @@ export const assets = {
         subCategory: "Escape Room",
         ticketEntry: ["Regular", "VIP"],
         available: true,
+        date: "2025-11-30",
     },
     {
         _id: "015",
@@ -205,5 +217,18 @@ export const assets = {
         subCategory: "Retreat",
         ticketEntry: ["Regular", "VIP"],
         available: true,
+        date: "2025-10-25",
+    },
+    {
+        _id: "016",
+        name: "Next Up16",
+        description: "An exciting tech conference.",
+        price: "35,000",
+        image: [event_16],
+        category: "Conference",
+        subCategory: "Tech",
+        ticketEntry: ["Regular", "VIP"],
+        available: true,
+        date: "2025-09-15",
     },
 ];

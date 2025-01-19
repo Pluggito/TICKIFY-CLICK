@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+ import { createContext } from "react";
 import { tickets } from "../assets/asset";
 
 export const TicketContext = createContext();
@@ -20,4 +20,4 @@ const TicketContextProvider = (props) => {
     );
 };
 
-export default TicketContextProvider;
+export default TicketContextProvider; 
