@@ -6,6 +6,7 @@ import about_icon from './icons8-info.svg'
 import home_icon from './icons8-home.svg'
 import promote_icon from './icons8-ads-64.png'
 import help_icon from './icons8-help-48.png'
+import seo_logo from './Tickfy Logo 01-6_page-0001.jpg'
 import event_1 from './pexels-adnan55-886051.jpg'
 import event_2 from './pexels-adrien-olichon-1257089-2823459.jpg'
 import event_3 from './pexels-alex-andrews-271121-1203819.jpg'
@@ -36,6 +37,7 @@ export const assets = {
     promote_icon,
     help_icon,
     home_icon,
+    seo_logo
  }
 
  export const tickets = [
