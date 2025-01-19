@@ -17,9 +17,11 @@ import { useState } from 'react';
 import Contact from './Frontend/Pages/Contact';
 import Dashboard from './Frontend/Admin/Dashboard';
 import CreateEvent from './Frontend/Pages/CreateEvent';
+import Tickets from './Frontend/Pages/Tickets';
 
 const App = () => {
   const [menu, setMenu] = useState(false);
+  const [newEvent, setNewEvent] = useState([]);
 
   return (
     <div className="container overflow-x-hidden m-auto">
@@ -37,12 +39,12 @@ const App = () => {
             <>
               <Home menu={menu} />
               <Preference />
-              <DiscoverEvents />
+              <DiscoverEvents newEvent={newEvent} setNewEvent={setNewEvent}/>
               <Features />
             </>
           }
         />
-        <Route path="/eventscategory/:ticketid" element={<EventsCategory />} />
+        <Route path="/eventscategory" element={<EventsCategory newEvent={newEvent} setNewEvent={setNewEvent} />} />
         <Route path="/about" element={<About />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/login" element={<Login menu={menu} />} />
@@ -52,6 +54,7 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path='/dashboard' element={<Dashboard/>}/>
         <Route path='/createevents' element={<CreateEvent/>} />
+        <Route path='/tickets/:Id' element={<Tickets />} />
       </Routes>
 
       {/* Footer */}
