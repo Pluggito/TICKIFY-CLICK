@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import Section from "./Section";
 import { TicketContext } from "../Context/TicketContext";
 import TicketItems from './TicketItems';

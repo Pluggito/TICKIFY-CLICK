@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react"
 import { TicketContext } from "../Context/TicketContext"
 import TicketItems from "../Components/TicketItems";
-import Section from "../Components/Section";
+
 
 
 
