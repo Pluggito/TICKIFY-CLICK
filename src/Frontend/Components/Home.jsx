@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { assets } from '../assets/asset';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleRight } from '@fortawesome/free-regular-svg-icons';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 // Debounce function for scroll event
 const debounce = (func, delay) => {
@@ -34,6 +34,7 @@ const Home = ({ menu }) => {
   const welcomeTextArray = "Welcome to".split('');
   const titleTextArray = "Tickify".split('');
 
+  const navigate = useNavigate()
   return (
     <div className="overflow-x-hidden mb-4 m-auto">
       <section
@@ -67,17 +68,11 @@ const Home = ({ menu }) => {
             ))}
           </motion.h2>
           <p className='font-space text-lg font-semibold text-gray-700 tracking-wide'>Find and book tickets for the hottest concerts, sports games, and shows near you.</p>
-          <NavLink to="/signup">
-            <button
-              onClick={() =>
-                document.querySelector('#next-section').scrollIntoView({ behavior: 'smooth' })
-              }
-              className="mt-4 flex items-center gap-2 border-black border-y-4 rounded-full py-3 px-5 font-semibold font-space text-gray-900 hover:bg-black hover:text-white transition-all duration-300"
-            >
+            <button  onClick={()=>navigate('/signup')}
+              className="mt-4 flex items-center gap-2 border-black border-y-4 rounded-full py-3 px-5 font-semibold font-space text-gray-900 hover:bg-black hover:text-white transition-all duration-300">
               <FontAwesomeIcon icon={faCircleRight} className="mr-2 tracking-widest" />
               GET STARTED
             </button>
-          </NavLink>
         </div>
 
         {/* Right Image */}
