@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { TicketContext } from "../Context/TicketContext";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendar } from "@fortawesome/free-regular-svg-icons";
 
 const TicketItems = ({ id, name, image, date, description, price }) => {
   const { currency } = useContext(TicketContext);
@@ -35,7 +37,8 @@ const TicketItems = ({ id, name, image, date, description, price }) => {
         <h3 className="text-lg font-semibold text-gray-800 font-[Poppins]">
           {name || defaultName}
         </h3>
-        <p className="text-sm text-gray-500">{date || defaultDate}</p>
+        <p className="text-sm text-gray-500 flex flex-row gap-2">
+          <span><FontAwesomeIcon icon={faCalendar} className="text-black"/></span>{date || defaultDate}</p>
         <p className="text-sm text-gray-700 my-2 line-clamp-2">
           {description || defaultDescription}
         </p>
