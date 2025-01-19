@@ -1,17 +1,16 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import { HashRouter } from 'react-router'
-import TicketContextProvider from './Frontend/Context/TicketContext.jsx'
-// import { ThemeContext } from './Frontend/Context/ThemeModes.jsx'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.css';
+import App from './App.jsx';
+import { BrowserRouter } from 'react-router-dom';
+import TicketContextProvider from './Frontend/Context/TicketContext.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <HashRouter>
+    <BrowserRouter>
       <TicketContextProvider>
-      <App />
+        <App />
       </TicketContextProvider>
-    </HashRouter>
-  </StrictMode>,
-)
+    </BrowserRouter>
+  </StrictMode>
+);
