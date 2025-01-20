@@ -68,11 +68,11 @@ const Home = ({ menu }) => {
             ))}
           </motion.h2>
           <p className='font-space text-lg font-semibold text-gray-700 tracking-wide'>Find and book tickets for the hottest concerts, sports games, and shows near you.</p>
-            <button  onClick={()=>navigate('/signup')}
+            <NavLink to='./signuppage'
               className="mt-4 flex items-center gap-2 border-black border-y-4 rounded-full py-3 px-5 font-semibold font-space text-gray-900 hover:bg-black hover:text-white transition-all duration-300">
               <FontAwesomeIcon icon={faCircleRight} className="mr-2 tracking-widest" />
               GET STARTED
-            </button>
+            </NavLink>
         </div>
 
         {/* Right Image */}
