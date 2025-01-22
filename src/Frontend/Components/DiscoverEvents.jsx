@@ -23,7 +23,7 @@ const DiscoverEvents = ({setNewEvent, newEvent}) => {
       </div>
 
       {/* Rendering Event Tickets */}
-      <div className="py-10 tracking-wider">
+      <div className="py-10 sm:px-5 tracking-wider">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {newEvent.map((event) => (
             <TicketItems

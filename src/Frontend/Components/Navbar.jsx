@@ -92,7 +92,7 @@ const Navbar = ({ isMobile, setIsMobile }) => {
   }, [location]);
 
   return (
-    <nav className="flex items-center justify-between py-4 px-6 relative">
+    <nav className="flex items-center justify-between py-4 px-5 relative ">
       {/* Logo Section */}
       {isMobile && userLoggedIn ? (
         <div className="w-2/3 sm:w-1/2 flex justify-between items-center">
@@ -108,8 +108,8 @@ const Navbar = ({ isMobile, setIsMobile }) => {
         </div>
       ) : (
         <>
-          <NavLink to="/" className="flex items-center gap-1 text-xl font-bold">
-            <img src={assets.logo_img} className="w-10" alt="Tickify Logo" />
+          <NavLink to="/" className="flex items-center gap-1 border border-green-800 text-xl font-bold ">
+            <img src={assets.logo_img} className="w-10 inline-block" alt="Tickify Logo" />
             <span>TICKIFY</span>
           </NavLink>
 
