@@ -1,12 +1,12 @@
-import { NavLink, useNavigate } from "react-router";
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { assets } from "../assets/asset";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import Section from "../Components/Section";
-import { useState } from "react";
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
-
-{/*------user Login------ */}
+import { signInWithGoogle, signUp } from "../../Backend/Auth/Auth";
+import ReactLoading from "react-loading";
 
 const SignUp = () => {
   const [userForm, setUserForm] = useState({
@@ -16,28 +16,65 @@ const SignUp = () => {
     password: "",
   });
 
- // let navigate = useNavigate()
-
   const [formError, setFormError] = useState("");
   const [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate(); // Define navigate here
+  
 
   const handleUserForm = (e) => {
     setUserForm({ ...userForm, [e.target.name]: e.target.value.trim() });
   };
 
-  const handleUserFormSubmit = () => {
+  const handleUserFormSubmit = (e) => {
+    e.preventDefault(); // Prevent form default submit
     if (!userForm.firstName || !userForm.lastName || !userForm.email || !userForm.password) {
       setFormError("Please fill in the required fields");
-      {/*-----place navigate here or anywhere ---- */}
-      // navigate('/dashboard'); 
 
       setTimeout(() => {
         setFormError("");
       }, 3000);
     } else {
       setFormError("");
+      handleSignUp();
     }
   };
+
+  const handleSignUp = async () => {
+    setLoading(true);
+    try {
+        await signUp(userForm.email, userForm.password, userForm.firstName, userForm.lastName); // Use correct SignUp function
+        navigate("/waiting");
+    } catch (err) {
+        console.log(err.message);
+    } finally {
+        setLoading(false);
+    }
+};
+
+  const handleSignInWithGoogle = async () => {
+    try {
+        await signInWithGoogle();
+        navigate("/");
+    } catch (err) {
+        console.log(err.message);
+    }
+  };
+
+
+  if (loading) {
+    return (
+        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+            w-full h-full flex justify-center items-center bg-white/80 z-50">
+            <ReactLoading
+                type="spinningBubbles"
+                color="#b30d0d"
+                height={100}
+                width={100}
+            />
+        </div>
+    );
+  }
 
   return (
     <div className="w-full m-auto flex items-center justify-center bg-inherit">
@@ -68,7 +105,9 @@ const SignUp = () => {
           </p>
 
           {/* Sign-up Buttons */}
-          <button className="w-3/4 flex items-center justify-center m-auto p-3 mb-4 text-gray-700 bg-gray-100 rounded-md shadow-md hover:bg-gray-200">
+          <button className="w-3/4 flex items-center justify-center m-auto p-3 mb-4 text-gray-700 bg-gray-100 rounded-md shadow-md hover:bg-gray-200"
+          onClick={handleSignInWithGoogle}
+          >
             <img
               src={assets.google_icon}
               alt="Google"
@@ -91,7 +130,7 @@ const SignUp = () => {
           </div>
 
           {/* Form */}
-          <form>
+          <form onSubmit={handleUserFormSubmit}>
             {formError && (
               <p className="text-red-700 text-md font-space font-bold py-3 inline-block">
                 {formError}
@@ -170,7 +209,7 @@ const SignUp = () => {
             </div>
             <button
               className="px-6 py-2 font-medium bg-black w-full text-white transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
-              onClick={handleUserFormSubmit}
+              type="submit"
             >
               SIGN UP
             </button>
@@ -191,8 +230,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
-
-
-
-
+export default SignUp

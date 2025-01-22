@@ -7,7 +7,7 @@ import TicketContextProvider from './Frontend/Context/TicketContext.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter>    
       <TicketContextProvider>
         <App />
       </TicketContextProvider>

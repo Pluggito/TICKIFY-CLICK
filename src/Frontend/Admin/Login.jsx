@@ -5,6 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faApple, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import { assets } from '../assets/asset';
+import ReactLoading from 'react-loading'
+import { useNavigate } from 'react-router-dom';
+import { logIn, signInWithGoogle } from '../../Backend/Auth/Auth';
+import { useAuth } from '../../Backend/Context/AuthContext';
 
 const Login = ({menu}) => {
 
@@ -12,6 +16,9 @@ const Login = ({menu}) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false); 
+  const { currentUser, userLoggedIn } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
  {/*-----Add Login Auth------- */}
  
@@ -30,9 +37,45 @@ const Login = ({menu}) => {
       setEmail(''),
       setPassword(''),
       setError('') // Clear the error if validation passes
+      login()
     }  
   };
+
+  const login = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+        await logIn(email, password);
+        navigate("/");
+    } catch (error) {
+        console.log(error.message);
+    } finally {
+        setLoading(false);
+    }
+}
+
+const handleSignInWithGoogle = async () => {
+  try {
+      await signInWithGoogle();
+      navigate("/");
+  } catch (err) {
+      console.log(err.message);
+  }
+};
   
+if (loading) {
+  return (
+      <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+          w-full h-full flex justify-center items-center bg-white/80 z-50">
+          <ReactLoading
+              type="spinningBubbles"
+              color="#b30d0d"
+              height={100}
+              width={100}
+          />
+      </div>
+  );
+}
 
   return (
     <div className={`relative z-40 flex items-center justify-center bg-inherit ${menu ? "hidden" : "block"} overflow-x-hidden max-w-7xl m-auto`}>
@@ -43,7 +86,7 @@ const Login = ({menu}) => {
         {/*------Title and Subtitle-------- */}
         <div className='text-center mb-8'>
           <Section section={'LOGIN TO YOUR ACCOUNT'} />
-          <p className='font-space text-md text-gray-600 '> Welcome back! We’re so excited to see you again</p>
+          <p className='font-space text-md text-gray-600 '> Welcome back! We're so excited to see you again</p>
         </div>
 
         <div className='flex flex-wrap md:flex-nowrap justify-between gap-8 py-2'>
@@ -89,9 +132,10 @@ const Login = ({menu}) => {
             onClick={handleSubmit} >
               Login to Your Account
             </button>
+            <NavLink to='/forgetpassword' className='mt-3 text-sm text-gray-600 hover:text-primary '>Forget Password?</NavLink>
             <p className="mt-3 text-sm text-gray-600">
-              Don’t have an account yet?{" "}
-              <NavLink to="/signup" className="text-[#b30d0d] hover:underline font-semibold text-md">
+              Don't have an account yet?{" "}
+              <NavLink to="/signup-page" className="text-[#b30d0d] hover:underline font-semibold text-md">
                 Register now!
               </NavLink>
             </p>
@@ -110,7 +154,8 @@ const Login = ({menu}) => {
 
            {/* Social Login */}
            <div className="w-full md:w-1/2 space-y-4 py-5">
-            <button className="w-full p-3 flex items-center justify-center gap-4  text-black text-md font-semibold shadow-md rounded-lg hover:bg-black hover:text-slate-100 duration-500 transition-all ease hover:opacity-90">
+            <button className="w-full p-3 flex items-center justify-center gap-4  text-black text-md font-semibold shadow-md rounded-lg hover:bg-black hover:text-slate-100 duration-500 transition-all ease hover:opacity-90"
+             onClick={handleSignInWithGoogle}>
               <span> <img
               src={assets.google_icon}
               alt="Google"
