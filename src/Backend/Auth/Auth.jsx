@@ -11,95 +11,67 @@ import {
   applyActionCode,
 } from "firebase/auth";
 
-export const signUp = async (email, password, fName, lName) => {
-  try {
-    const userCred = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-
-    const userId = userCred.user.uid;
-    const userRef = doc(db, "Users", userId);
-
-    const userData = {
-      firstName: fName,
-      lastName: lName,
-      email: email,
-      emailVerified: false,
-      createdAt: new Date(),
-    };
-
-    await setDoc(userRef, userData);
-    await sendConfirmEmail();
-    return userCred;
-  } catch (error) {
-    throw new Error(error.message);
-  }
+// Sign Up Function
+export const signUp = async (email, password, firstName, lastName) => {
+  const userCred = await createUserWithEmailAndPassword(auth, email, password);
+  const userRef = doc(db, "Users", userCred.user.uid);
+  const userData = {
+    firstName,
+    lastName,
+    email,
+    emailVerified: false,
+    createdAt: new Date().toISOString(),
+  };
+  await setDoc(userRef, userData);
+  await sendEmailVerification(auth.currentUser);
+  return userCred;
 };
 
-//THIS IS THE METHOD TO LOG A USER IN
-export const logIn = async (email, password) => {
-  return signInWithEmailAndPassword(auth, email, password);
-};
+// Login Function
+export const logIn = (email, password) => 
+  signInWithEmailAndPassword(auth, email, password);
 
-// THIS IS THE METHOD TO SIGN UP WITH GOOGLE
+// Google Sign In
 export const signInWithGoogle = async () => {
   const provider = new GoogleAuthProvider();
-  const result = await signInWithPopup(auth, provider);
-
-  return result;
+  const userCred = await signInWithPopup(auth, provider);
+  const userRef = doc(db, "Users", userCred.user.uid);
+  const userData = {
+    firstName: userCred.user.displayName?.split(' ')[0] || '',
+    lastName: userCred.user.displayName?.split(' ')[1] || '',
+    email: userCred.user.email,
+    emailVerified: userCred.user.emailVerified,
+    createdAt: new Date().toISOString(),
+  };
+  await setDoc(userRef, userData, { merge: true });
+  return userCred;
 };
 
-// THIS IS THE METHOD TO LOGOUT
-export const signOut = () => {
-  return auth.signOut();
-};
+// Sign Out
+export const signOut = () => auth.signOut();
 
-export const forgetPassword = async (email) => {
-  try {
-    await sendPasswordResetEmail(auth, email, {
-      url: "http://localhost:5173/Tickify_Project/login",
-    });
-    alert("An Email has been sent to " + email);
-  } catch (error) {
-    console.error(error);
-  }
-};
+// Password Reset
+export const forgetPassword = (email) => 
+  sendPasswordResetEmail(auth, email, {
+    url: "http://localhost:5173/login", // Or your production URL
+  });
 
-export const resetPassword = async (oobCode, newPassword) => {
-  try {
-    await confirmPasswordReset(auth, oobCode, newPassword);
-  } catch (error) {
-    console.log(error);
-  }
-};
+// Reset Password
+export const resetPassword = (oobCode, newPassword) => 
+  confirmPasswordReset(auth, oobCode, newPassword);
 
-export const sendConfirmEmail = async () => {
-  try {
-    await sendEmailVerification(auth.currentUser);
-    //YOU CAN CHANGE THE ALERT TO SOMETHING FINER
-    alert("Email Verification Link Sent Has Been Sent To You");
-  } catch (error) {
-    console.error(error);
-  }
-};
+// Email Verification
+export const sendConfirmEmail = () => 
+  sendEmailVerification(auth.currentUser);
 
+// Verify Email
 export const verifyEmail = async (oobCode, navigate) => {
-  try {
-    //FUNCTION TO VERIFY THE OOBCODE
-    await applyActionCode(auth, oobCode);
-    await auth.currentUser.reload();
-    const currentUser = auth.currentUser;
-    if (currentUser) {
-      const userDocRef = doc(db, "Users", currentUser.uid);
-      await updateDoc(userDocRef, { emailVerified: true });
-      alert("Email successfully verified");
-    } else {
-      alert("User is not logged in. Email verification was successful.");
-      navigate("/login"); // Redirect user to log in
-    }
-  } catch (error) {
-    console.error("Email verification failed:", error);
+  await applyActionCode(auth, oobCode);
+  if (auth.currentUser) {
+    const userRef = doc(db, "Users", auth.currentUser.uid);
+    await updateDoc(userRef, { emailVerified: true });
+    return "Email verified successfully";
   }
+  navigate("/login");
+  return "Email verified. Please log in.";
 };

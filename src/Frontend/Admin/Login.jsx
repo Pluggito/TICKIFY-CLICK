@@ -41,13 +41,13 @@ const Login = ({menu}) => {
     }  
   };
 
-  const login = async (e) => {
-    e.preventDefault();
+  const login = async () => {
     setLoading(true);
     try {
         await logIn(email, password);
         navigate("/");
     } catch (error) {
+        setError('Invalid email or password. Please try again.');
         console.log(error.message);
     } finally {
         setLoading(false);
@@ -57,7 +57,7 @@ const Login = ({menu}) => {
 const handleSignInWithGoogle = async () => {
   try {
       await signInWithGoogle();
-      navigate("/");
+      navigate("http://localhost:5176/");
   } catch (err) {
       console.log(err.message);
   }
@@ -81,7 +81,7 @@ if (loading) {
     <div className={`relative z-40 flex items-center justify-center bg-inherit ${menu ? "hidden" : "block"} overflow-x-hidden max-w-7xl m-auto`}>
 
 
-      <div className='max-w-4xl w-full p-10 shadow-xl bg-slate-100 rounded-xl bg-opacity-75 mb-10'>
+      <div className='max-w-4xl w-full p-10 shadow-xl bg-slate-100 rounded-xl bg-opacity-75 mb-10 mt-7'>
 
         {/*------Title and Subtitle-------- */}
         <div className='text-center mb-8'>
