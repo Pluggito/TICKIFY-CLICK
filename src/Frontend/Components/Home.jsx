@@ -40,7 +40,7 @@ const Home = ({ menu }) => {
  
 
   return (
-    <div className="overflow-x-hidden mb-4 m-auto">
+    <div className="overflow-x-hidden mb-4 m-auto mt-8 z-1">
       <section
         aria-label="Welcome Section"
         className={`relative flex flex-col md:flex-row gap-9 transition-all duration-300  w-full mx-auto px-8 ${

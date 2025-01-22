@@ -6,7 +6,7 @@ import { faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import Section from "../Components/Section";
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import { signInWithGoogle, signUp } from "../../Backend/Auth/Auth";
-import ReactLoading from "react-loading";
+//import ReactLoading from "react-loading";
 
 const SignUp = () => {
   const [userForm, setUserForm] = useState({
@@ -18,37 +18,64 @@ const SignUp = () => {
 
   const [formError, setFormError] = useState("");
   const [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
-  const [loading, setLoading] = useState(false);
+ // const [loading, setLoading] = useState(false);
   const navigate = useNavigate(); // Define navigate here
   
-
-  const handleUserForm = (e) => {
-    setUserForm({ ...userForm, [e.target.name]: e.target.value.trim() });
-  };
-
   const handleUserFormSubmit = (e) => {
-    e.preventDefault(); // Prevent form default submit
+    e.preventDefault();
+    // Validate all required fields
     if (!userForm.firstName || !userForm.lastName || !userForm.email || !userForm.password) {
-      setFormError("Please fill in the required fields");
-
-      setTimeout(() => {
-        setFormError("");
-      }, 3000);
-    } else {
-      setFormError("");
-      handleSignUp();
+        setFormError("Please fill in all required fields");
+        setTimeout(() => setFormError(""), 3000);
+        return;
     }
-  };
+    
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(userForm.email)) {
+        setFormError("Please enter a valid email address");
+        return;
+    }
 
+    // Validate password strength
+    if (userForm.password.length < 6) {
+        setFormError("Password must be at least 6 characters long");
+        return;
+    }
+
+    setFormError("");
+    handleSignUp();
+};
+
+const handleUserForm = (e) => {
+    const { name, value } = e.target;
+    setUserForm(prev => ({
+        ...prev,
+        [name]: value.trim()
+    }));
+    // Clear error when user starts typing
+    if (formError) setFormError("");
+};
+
+// Navigates back to home if successful
   const handleSignUp = async () => {
-    setLoading(true);
     try {
-        await signUp(userForm.email, userForm.password, userForm.firstName, userForm.lastName); // Use correct SignUp function
-        navigate("/waiting");
+        await signUp(userForm.email, userForm.password, userForm.firstName, userForm.lastName);
+        navigate("/");
     } catch (err) {
+        // Improve error handling with specific messages
+        let errorMessage = "An error occurred during sign up.";
+        if (err.code === "auth/email-already-in-use") {
+            errorMessage = "This email is already registered.";
+        } else if (err.code === "auth/weak-password") {
+            errorMessage = "Password should be at least 6 characters.";
+        } else if (err.code === "auth/invalid-email") {
+            errorMessage = "Please enter a valid email address.";
+        }
+        setFormError(errorMessage);
         console.log(err.message);
     } finally {
-        setLoading(false);
+       
     }
 };
 
@@ -62,19 +89,7 @@ const SignUp = () => {
   };
 
 
-  if (loading) {
-    return (
-        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-            w-full h-full flex justify-center items-center bg-white/80 z-50">
-            <ReactLoading
-                type="spinningBubbles"
-                color="#b30d0d"
-                height={100}
-                width={100}
-            />
-        </div>
-    );
-  }
+
 
   return (
     <div className="w-full m-auto flex items-center justify-center bg-inherit">
@@ -130,7 +145,7 @@ const SignUp = () => {
           </div>
 
           {/* Form */}
-          <form onSubmit={handleUserFormSubmit}>
+          <form >
             {formError && (
               <p className="text-red-700 text-md font-space font-bold py-3 inline-block">
                 {formError}
@@ -210,6 +225,7 @@ const SignUp = () => {
             <button
               className="px-6 py-2 font-medium bg-black w-full text-white transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
               type="submit"
+              onClick={handleUserFormSubmit}
             >
               SIGN UP
             </button>

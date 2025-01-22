@@ -20,7 +20,7 @@ export const SideMenu = ({ menu, setMenu }) => {
   }, [menu]);
 
   return (
-    <div className="place-content-center bg-inherit sm:hidden right-0 top-7 absolute">
+    <div className="place-content-center bg-inherit sm:hidden right-0 top-3 absolute z-50">
       {/* Hamburger Button */}
       <AnimatedHamburgerButton
         active={active}

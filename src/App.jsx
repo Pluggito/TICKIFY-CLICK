@@ -12,7 +12,7 @@ import Login from './Frontend/Admin/Login';
 import Reset from './Frontend/Admin/Reset';
 import Advert from './Frontend/Pages/Advert';
 import { SideMenu } from './Frontend/Components/SideMenu';
-import { useState } from 'react';
+import {  useState } from 'react';
 import Contact from './Frontend/Pages/Contact';
 import Dashboard from './Frontend/Admin/Dashboard';
 import CreateEvent from './Frontend/Pages/CreateEvent';
@@ -24,12 +24,14 @@ import ForgetPassword from './Frontend/Admin/ForgetPassword';
 const App = () => {
   const [menu, setMenu] = useState(false);
   const [newEvent, setNewEvent] = useState([]);
+  const [isMobile, setIsMobile] = useState(false) // Adjust 768 to your breakpoint
+
 
   return (
       <AuthProvider>
         <div className="container overflow-x-hidden m-auto">
           {/* Navbar */}
-          <Navbar />
+          <Navbar isMobile={isMobile} setIsMobile={setIsMobile} />
 
           {/* Side Menu */}
           <SideMenu setMenu={setMenu} menu={menu} />
