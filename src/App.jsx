@@ -18,7 +18,7 @@ import Dashboard from './Frontend/Admin/Dashboard';
 import CreateEvent from './Frontend/Pages/CreateEvent';
 import Tickets from './Frontend/Pages/Tickets';
 import AuthProvider from './Backend/Context/AuthContext';
-import SignUpPage from './Frontend/Admin/SIgnUpPage';
+import Signup from './Frontend/Admin/Signup'
 import ForgetPassword from './Frontend/Admin/ForgetPassword';
 
 const App = () => {
@@ -51,7 +51,7 @@ const App = () => {
             <Route path="/about" element={<About />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/login" element={<Login menu={menu} />} />
-            <Route path="/signup-page" element={<SignUpPage />} />
+            <Route path='signup-page' element={<Signup/> } />
             <Route path="/reset" element={<Reset />} />
             <Route path="/advert" element={<Advert />} />
             <Route path="/contact" element={<Contact />} />
