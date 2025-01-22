@@ -1,8 +1,10 @@
-import { faCircle } from "@fortawesome/free-solid-svg-icons";
+import { faCircle, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useRef, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { assets } from "../assets/asset";
+import { useAuth } from "../../Backend/Context/AuthContext";
+import { signOut } from "../../Backend/Auth/Auth";
 
 const NAV_ITEMS = [
   { path: '/', label: 'HOME' },
@@ -15,6 +17,12 @@ const Navbar = () => {
   const [activeNav, setActiveNav] = useState(0);
   const indicatorRef = useRef(null);
   const location = useLocation();
+  const { userLoggedIn, currentUser } = useAuth();
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownVisible(!dropdownVisible);
+  };
 
   const handleNavClick = (index) => {
     setActiveNav(index);
@@ -44,12 +52,14 @@ const Navbar = () => {
   return (
     <nav className="flex items-center justify-between py-5 font-medium relative overflow-hidden m-auto">
       {/* Logo */}
-      <div  className="">
+      <div>
         <NavLink to="/" className="text-2xl font-bold flex items-center justify-center flex-row">
           <img src={assets.logo_img} className="w-20 inline-block" alt="Tickify Logo" />
           <p className="-ml-[15px]">TICKIFY</p>
         </NavLink>
       </div>
+
+      {userLoggedIn && <p>Logged in as {currentUser.email}</p>}
 
       {/* Navigation Items */}
       <ul className="flex-row justify-center gap-4 mr-4 bg-transparent sm:flex hidden relative">
@@ -75,10 +85,37 @@ const Navbar = () => {
           />
         </li>
 
-        {/* Login Button */}
-        <button name="login" className="rounded-2xl border-2  border-dashed border-black bg-white px-6 py-3 font-semibold uppercase text-black transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none font-space">
-          <NavLink to="/login" className='tracking-widest '>Login</NavLink>
-        </button>
+        {/* User Options */}
+        <div>
+          {userLoggedIn ? (
+            <div className="relative">
+              <FontAwesomeIcon 
+                icon={faUser} 
+                size="lg" 
+                onClick={toggleDropdown}
+                className='cursor-pointer text-gray-500'
+              />
+              {dropdownVisible && (
+                <div className="absolute top-[50px] right-[35px] bg-white border border-gray-200 
+                  shadow-lg rounded-md overflow-hidden">
+                  <ul className="flex flex-col">
+                    <li className="px-4 py-2 hover:bg-gray-100 hover:text-[#b30d0d] cursor-pointer">
+                      <NavLink to="/profile">Profile</NavLink>
+                    </li>
+                    <li className="px-4 py-2 hover:bg-gray-100 hover:text-[#b30d0d] cursor-pointer"
+                      onClick={signOut}>
+                      Logout
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
+          ) : (
+            <button name="login" className="rounded-2xl border-2 border-dashed border-black bg-white px-6 py-3 font-semibold uppercase text-black transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none font-space">
+              <NavLink to="/login" className='tracking-widest'>Login</NavLink>
+            </button>
+          )}
+        </div>
       </ul>
     </nav>
   );
