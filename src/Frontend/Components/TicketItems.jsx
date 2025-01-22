@@ -15,11 +15,11 @@ const TicketItems = ({ id, name, image, date, description, price }) => {
 
   return (
     <Link
-      className="block bg-inherit overflow-hidden hover:shadow-xl transition-shadow duration-500 ease-in rounded-lg"
+      className="block bg-inherit overflow-hidden hover:shadow-xl transition-shadow duration-500 ease-in rounded-lg px-5 "
       to={id ? `/tickets/${id}` : "#"}
     >
       {/* Image Section */}
-      <div className="overflow-hidden">
+      <div className="overflow-hidden px-3">
         <img
           className="hover:scale-110 transition-transform duration-300 ease-in-out h-40 w-full object-cover"
           src={
