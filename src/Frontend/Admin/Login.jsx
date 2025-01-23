@@ -7,8 +7,8 @@ import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import { assets } from '../assets/asset';
 import ReactLoading from 'react-loading'
 import { useNavigate } from 'react-router-dom';
-import { logIn, signInWithGoogle } from '../../Backend/Auth/Auth';
-import { useAuth } from '../../Backend/Context/AuthContext';
+import { logIn, signInWithGoogle } from '../../Backend/AuthLogic';
+import { useAuth } from '../../Backend/AuthContext';
 
 const Login = ({menu}) => {
 
@@ -18,6 +18,7 @@ const Login = ({menu}) => {
   const [showPassword, setShowPassword] = useState(false); 
   const { currentUser, userLoggedIn } = useAuth();
   const [loading, setLoading] = useState(false);
+  const [initials, setInitials] = useState('');
   const navigate = useNavigate();
 
  {/*-----Add Login Auth------- */}
@@ -66,8 +67,9 @@ const Login = ({menu}) => {
 
 const handleSignInWithGoogle = async () => {
   try {
-      await signInWithGoogle();
-      navigate("http://localhost:5176/");
+      const result = await signInWithGoogle();
+      setInitials(result.initial);
+      navigate("/");
   } catch (err) {
       console.log(err.message);
   }
