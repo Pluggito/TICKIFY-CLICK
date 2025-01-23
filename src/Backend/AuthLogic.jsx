@@ -1,4 +1,4 @@
-import { auth, db } from "./firebase";
+import { auth,db } from "./Auth/firebase";
 import { doc, setDoc, updateDoc } from "@firebase/firestore";
 import {
   createUserWithEmailAndPassword,
@@ -44,10 +44,31 @@ export const logIn = async (email, password) => {
 
 // THIS IS THE METHOD TO SIGN UP WITH GOOGLE
 export const signInWithGoogle = async () => {
-  const provider = new GoogleAuthProvider();
-  const result = await signInWithPopup(auth, provider);
+  try {
+    const provider = new GoogleAuthProvider();
+    const result = await signInWithPopup(auth, provider);
 
-  return result;
+    const user = result.user;
+    const displayName = user.displayName || "";
+    const email = user.email || "";
+
+    // Split full name into first and last name
+    const [firstName = "", lastName = ""] = displayName.split(" ");
+      // Extract the first letter of the first and last name
+      const firstInitial = firstName.charAt(0).toUpperCase(); // Ensure uppercase
+      const lastInitial = lastName.charAt(0).toUpperCase(); // Ensure uppercase
+      const initial = firstInitial + lastInitial;
+  
+      const data = { firstName, lastName, initial, email };
+
+
+    console.log(data)
+
+    return data;
+
+  } catch (error) {
+    
+  }
 };
 
 // THIS IS THE METHOD TO LOGOUT

@@ -1,4 +1,4 @@
-import { forgetPassword } from "../../Backend/Auth/Auth"
+import { forgetPassword } from "../../Backend/AuthLogic"
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
