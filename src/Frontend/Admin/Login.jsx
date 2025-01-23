@@ -21,7 +21,16 @@ const Login = ({menu}) => {
   const navigate = useNavigate();
 
  {/*-----Add Login Auth------- */}
- 
+
+ const handleLogin = async () => {
+  try {
+    await logIn(email, password)
+  } catch (error) {
+    setError(error.message)
+  }
+   
+ }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if(!email && !password){
@@ -34,6 +43,7 @@ const Login = ({menu}) => {
 
 
     else {
+      handleLogin()
       setEmail(''),
       setPassword(''),
       setError('') // Clear the error if validation passes
