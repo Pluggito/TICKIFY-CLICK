@@ -8,16 +8,18 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: none;
 }
 
+html{
+  scroll-behavior: smooth;
+}
 
 body{
   background-color: rgb(240, 238, 235); /* Light background color */
   background-image: radial-gradient(rgba(0, 0, 0, 0.02) 1px, rgba(0, 0, 0, 0) 1px); /* Light radial gradient */
   background-size: 4px 4px; 
   overflow-x: hidden;
-  scroll-behavior: smooth;
-  
 }
 
 
