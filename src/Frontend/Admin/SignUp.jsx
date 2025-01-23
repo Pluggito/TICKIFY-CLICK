@@ -5,6 +5,7 @@ import { faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import Section from "../Components/Section";
 import { useState } from "react";
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
+import { signUp } from "../../Backend/AuthLogic";
 
 {/*------user Login------ */}
 
@@ -18,6 +19,14 @@ const SignUp = () => {
   const [formError, setFormError] = useState("");
   const [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
 
+  const handleSignUp = async () => {
+    try {
+      signUp(userForm.email, userForm.password, userForm.name);
+    } catch (error) {
+      
+    }
+  };
+  
   const handleUserForm = (e) => {
     setUserForm({ ...userForm, [e.target.name]: e.target.value.trim() });
   };

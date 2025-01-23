@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faApple, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import { assets } from '../assets/asset';
+import { logIn } from '../../Backend/AuthLogic';
 
 const Login = ({menu}) => {
 
@@ -14,7 +15,16 @@ const Login = ({menu}) => {
   const [showPassword, setShowPassword] = useState(false); 
 
  {/*-----Add Login Auth------- */}
- 
+
+ const handleLogin = async () => {
+  try {
+    await logIn(email, password)
+  } catch (error) {
+    setError(error.message)
+  }
+   
+ }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if(!email && !password){
@@ -27,6 +37,7 @@ const Login = ({menu}) => {
 
 
     else {
+      handleLogin()
       setEmail(''),
       setPassword(''),
       setError('') // Clear the error if validation passes
