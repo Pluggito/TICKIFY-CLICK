@@ -17,7 +17,7 @@ import Contact from './Frontend/Pages/Contact';
 import Dashboard from './Frontend/Admin/Dashboard';
 import CreateEvent from './Frontend/Pages/CreateEvent';
 import Tickets from './Frontend/Pages/Tickets';
-import AuthProvider from './Backend/Context/AuthContext';
+import { AuthProvider } from './Backend/AuthContext';
 import Signup from './Frontend/Admin/Signup'
 import ForgetPassword from './Frontend/Admin/ForgetPassword';
 

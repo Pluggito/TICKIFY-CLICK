@@ -7,8 +7,8 @@ import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import { assets } from '../assets/asset';
 import ReactLoading from 'react-loading'
 import { useNavigate } from 'react-router-dom';
-import { logIn, signInWithGoogle } from '../../Backend/Auth/Auth';
-import { useAuth } from '../../Backend/Context/AuthContext';
+import { logIn, signInWithGoogle } from '../../Backend/AuthLogic';
+import { useAuth } from '../../Backend/AuthContext';
 
 const Login = ({menu}) => {
 
@@ -18,10 +18,20 @@ const Login = ({menu}) => {
   const [showPassword, setShowPassword] = useState(false); 
   const { currentUser, userLoggedIn } = useAuth();
   const [loading, setLoading] = useState(false);
+  const [initials, setInitials] = useState('');
   const navigate = useNavigate();
 
  {/*-----Add Login Auth------- */}
- 
+
+ const handleLogin = async () => {
+  try {
+    await logIn(email, password)
+  } catch (error) {
+    setError(error.message)
+  }
+   
+ }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if(!email && !password){
@@ -34,6 +44,7 @@ const Login = ({menu}) => {
 
 
     else {
+      handleLogin()
       setEmail(''),
       setPassword(''),
       setError('') // Clear the error if validation passes
@@ -56,8 +67,9 @@ const Login = ({menu}) => {
 
 const handleSignInWithGoogle = async () => {
   try {
-      await signInWithGoogle();
-      navigate("http://localhost:5176/");
+      const result = await signInWithGoogle();
+      setInitials(result.initial);
+      navigate("/");
   } catch (err) {
       console.log(err.message);
   }
